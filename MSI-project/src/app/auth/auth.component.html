@@ -1,0 +1,81 @@
+
+<div class="container z-depth-1">
+
+
+  <!--Section: Content-->
+  <section class=" text-center text-lg-left dark-grey-text">
+
+
+    <!--Grid row-->
+    <div class="row d-flex justify-content-center">
+
+      <!--Grid column-->
+      <div class="col-md-12">
+
+    <form class="text-center"
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+    <p class="h4 ">Zaloguj</p>
+
+        <input
+          type="text"
+          class="form-control mb-4"
+          name="username"
+          style="width: 200px;"
+          placeholder="Username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && username.invalid"
+        >
+        Podaj hasło
+        </div>
+        <input
+          type="password"
+          class="form-control mb-4"
+          name="password"
+          placeholder="Password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && password.invalid"
+        >
+          <div *ngIf="password.errors.required">Nie wprowadzono hasła</div>
+          <div *ngIf="password.errors.minlength">
+            Minimalna liczba znaków to 6
+          </div>
+        </div>
+
+
+        <button class="btn btn-info btn-block my-4" type="submit">Zaloguj</button>
+
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+        Logowanie nie powiodło się: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+    <p style="color: gray;">Nie posiadasz konta?</p>
+      <button class="btn btn-info btn-block my-4" href="#">Utwórz konto</button>
+
+      </div>
+      </div>
+  </section>
+  </div>

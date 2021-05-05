@@ -1,0 +1,29 @@
+
+
+h1 {
+  margin-top: 10%;
+  letter-spacing: 8px;
+  font-size: 40px;
+  color: white;
+}
+
+h5 {
+  letter-spacing: 3px;
+  color: white;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
+}
+
+.white {
+  border-color: white;
+  color: black;
+}
+
+.white:hover {
+  background: white;
+  color: black;
+}
+
