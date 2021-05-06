@@ -1,3 +1,17 @@
-<p>
-  owner-equipement-list works!
-</p>
+<div class = "row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" routerLink="-1/edit">Dodaj sprzęt</button>
+  </div>
+</div>
+
+<hr>
+
+<div class = "row">
+  <div class="col-xs-12">
+
+    <app-owner-equipement-item *ngFor="let equipement of equipements; let i = index" [equipement] = "equipement" [id] = "i"> </app-owner-equipement-item>
+
+  </div>
+
+</div>
+

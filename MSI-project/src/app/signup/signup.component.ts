@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-
+    console.log(this.form);
   }
 
   createUser(message: string){

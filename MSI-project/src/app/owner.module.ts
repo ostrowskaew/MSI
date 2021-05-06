@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { OwnerRoutingModule } from "./owner-routing.module";
@@ -19,7 +20,8 @@ import { OwnerSelectEquipementInfoComponent } from "./owner/owner-equipement/own
   ],
 
   imports: [
-    OwnerRoutingModule
+    OwnerRoutingModule,
+    CommonModule
   ]
 })
 export class OwnerModule {

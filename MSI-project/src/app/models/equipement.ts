@@ -1,7 +1,10 @@
-export class Equipement {
+import { EquipementType } from "./equipementType";
 
+export class Equipement {
   constructor(
     private _id: number,
+    private _urlImage: string,
+    private _brand: string,
     private _pricePerHour: number,
     private _lenderInstructor: number,
     private _size: string,
@@ -26,6 +29,20 @@ export class Equipement {
     }
     public set size(value: string) {
       this._size = value;
+    }
+
+    public get urlImage(): string {
+      return this._urlImage;
+    }
+    public set urlImage(value: string) {
+      this._urlImage = value;
+    }
+
+    public get brand(): string {
+      return this._brand;
+    }
+    public set brand(value: string) {
+      this._brand = value;
     }
     public get lenderInstructor(): number {
       return this._lenderInstructor;

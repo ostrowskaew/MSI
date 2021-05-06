@@ -1,3 +1,24 @@
-<p>
-  owner-equipement-item works!
-</p>
+<a
+style="cursor: pointer"
+class ="list-group-item clearfix"
+[routerLink]="[id]"
+routerLinkActive="active">
+<div class="pull-left">
+  <div class="row">
+    <div class="col-9">
+      <h4 class="list-group-item-heading"> {{equipement.brand}} {{equipement.size}}</h4>
+      <p class="list-group-item">{{equipement.description}}</p>
+    </div>
+    <div class="col-3">
+      <span class="pull-right">
+        <img src="{{equipement.urlImage}}"
+        alt="{{equipement.description}}"
+        class="image-responsive"
+        style="max-height: 100px; max-width: 100px;">
+      </span>
+    </div>
+  </div>
+
+</div>
+
+</a>

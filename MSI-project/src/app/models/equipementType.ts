@@ -1,8 +1,8 @@
-enum EquipementType {
-  Wetsuit,
-  Harness,
-  KitesurfingBoard,
-  WindsurfingBoard,
-  Kite,
-  Sail
+export enum EquipementType {
+  WETSUIT,
+  HARNESS,
+  KITEBOARD,
+  WINDBOARD,
+  KITE,
+  SAIL
 }

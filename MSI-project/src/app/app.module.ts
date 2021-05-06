@@ -10,6 +10,7 @@ import { AuthComponent } from './auth/auth.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { OwnerModule } from './owner.module';
+import { EquipementService } from './services/equipement.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { OwnerModule } from './owner.module';
     FormsModule,
     OwnerModule
   ],
-  providers: [],
+  providers: [EquipementService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
