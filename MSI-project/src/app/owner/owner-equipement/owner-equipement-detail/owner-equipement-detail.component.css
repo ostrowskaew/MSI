@@ -1,0 +1,12 @@
+h1 {
+  letter-spacing: 3px;
+}
+
+.attribute {
+  font-weight: 500;
+  padding: 2px;
+}
+
+hr {
+  width: 90%;
+}

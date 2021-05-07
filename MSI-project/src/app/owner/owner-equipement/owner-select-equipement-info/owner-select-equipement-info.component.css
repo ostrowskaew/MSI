@@ -1,0 +1,9 @@
+.centered {
+  position: absolute;
+  top: 10%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: white;
+  letter-spacing: 4px;
+  size: 30px;
+}

@@ -1,10 +1,12 @@
 import { EquipementType } from "./equipementType";
 
 export class Equipement {
+
   constructor(
     private _id: number,
     private _urlImage: string,
     private _brand: string,
+    private _model: string,
     private _pricePerHour: number,
     private _lenderInstructor: number,
     private _size: string,
@@ -23,6 +25,13 @@ export class Equipement {
     }
     public set description(value: string) {
       this._description = value;
+    }
+
+    public get model(): string {
+      return this._model;
+    }
+    public set model(value: string) {
+      this._model = value;
     }
     public get size(): string {
       return this._size;
