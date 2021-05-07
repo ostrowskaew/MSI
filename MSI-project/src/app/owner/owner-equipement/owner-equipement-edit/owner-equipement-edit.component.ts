@@ -28,6 +28,11 @@ export class OwnerEquipementEditComponent implements OnInit {
       if(this.editMode) {
         this.equipement = this.equipementService.getEquipement(this.id);
       }
+      else {
+        this.equipement = new Equipement(
+          this.equipementService.getEquipements().length + 2, "", "","", 0, 0, "", "","", null)
+        console.log(this.equipement.id);
+      }
     })
 
 
