@@ -11,6 +11,9 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { OwnerModule } from './owner.module';
 import { EquipementService } from './services/equipement.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,17 @@ import { EquipementService } from './services/equipement.service';
     CommonModule,
     AppRoutingModule,
     FormsModule,
-    OwnerModule
+    OwnerModule,
+    HttpClientModule
   ],
-  providers: [EquipementService],
+  providers: [EquipementService,
+  CookieService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

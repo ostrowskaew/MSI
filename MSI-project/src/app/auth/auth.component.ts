@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../dto/user';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -6,21 +10,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+  model: User;
   form: any = {};
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 
-  constructor() {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
 
   ngOnInit(): void {
+    this.model = {login: '', password: ''};
   }
 
   onSubmit() {
-
+    this.model.login = this.form.username;
+    this.model.password = this.form.password;
+    this.authService.logToAccount(this.model).subscribe(
+      (tmp) => {
+        this.router.navigate(['/home'])
+      },
+      (err) => {
+        alert('Wprowadzono błędne dane!');
+        this.form.username.setValue('');
+        this.form.password.setValue('');
+        console.log(err);
+      }
+    );
   }
 
   reloadPage() {
