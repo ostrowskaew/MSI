@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   userSub: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-
+    this.userSub = this.authService.isSignedIn
+    .subscribe(user => {
+      this.isLoggedIn = !!user;
+    });
   }
 
   ngOnDestroy(): void {
@@ -22,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogout() {
-    //this.authService.logout();
+    this.authService.logout();
   }
 
 }

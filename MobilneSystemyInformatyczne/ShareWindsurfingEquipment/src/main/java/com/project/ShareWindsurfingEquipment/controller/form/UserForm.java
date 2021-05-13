@@ -17,6 +17,8 @@ public class UserForm {
     private BigDecimal pricePerHour;
     private String role;
 
+    public UserForm(){}
+
     public UserForm(String login, String password, String email, String description, boolean instructor, BigDecimal pricePerHour, String role) {
         this.login = login;
         this.password = password;

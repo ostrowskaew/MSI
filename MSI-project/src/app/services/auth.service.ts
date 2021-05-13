@@ -11,6 +11,7 @@ import { UserLogIn } from '../dto/user-log-in';
 })
 export class AuthService {
   private endpoint = 'http://localhost:9090/userLogin/logIn';
+  private endpointSignUp = 'http://localhost:9090/user';
   userLogin: UserLogIn;
   userDto: User;
   private isLoggedIn = new BehaviorSubject<boolean>(false);
@@ -18,7 +19,7 @@ export class AuthService {
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   logToAccount(user: User): Observable<UserLogIn> {
-    
+
     return this.http
       .post<UserLogIn>(`${this.endpoint}`, user)
       .pipe(
@@ -26,6 +27,21 @@ export class AuthService {
           this.cookieService.set('token', usrLogin.token);
           localStorage.setItem('role', usrLogin.role);
           this.userLogin = usrLogin;
+          this.isLoggedIn.next(true);
+          this.userDto = user;
+        })
+      );
+  }
+
+  signUp(user: any): Observable<any> {
+
+    return this.http
+      .post<any>(`${this.endpointSignUp}`, user)
+      .pipe(
+        tap((usrSignUp) => {
+          this.cookieService.set('token', usrSignUp.token);
+          localStorage.setItem('role', usrSignUp.role);
+          this.userLogin = usrSignUp;
           this.isLoggedIn.next(true);
           this.userDto = user;
         })

@@ -1,7 +1,11 @@
+import { Role } from "./role";
+
 export class UserAccount {
+
 
   constructor(
     private _id: number,
+    private _login: string,
     private _password: string,
     private _email: string,
     private _description: string,
@@ -51,5 +55,12 @@ export class UserAccount {
   }
   public set id(value: number) {
     this._id = value;
+  }
+
+  public get login(): string {
+    return this.login;
+  }
+  public set login(value: string) {
+    this.login = value;
   }
 }

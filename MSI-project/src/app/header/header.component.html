@@ -18,7 +18,7 @@
             <a class="nav-link" routerLink="owner-equipement" routerLinkActive="active">Udostępnij sprzęt</a>
         </li>
       </ul>
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
           <li class="nav-item">
               <a class="nav-link" routerLink="signup">Utwórz konto</a>
           </li>
@@ -31,6 +31,19 @@
             </div>
         </li>
       </ul>
+      <div class="loggedInUser" *ngIf="isLoggedIn">
+        <ul class="navbar-nav ml-auto" >
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/">Mój Profil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Moje wypożyczenia</a>
+          </li>
+          <button class="btn btn-outline-info my-2 my-sm-0" (click)="onLogout()">Wyloguj</button>
+      </ul>
+
+      </div>
+
       </div>
 
 
