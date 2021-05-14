@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Equipement } from 'src/app/models/equipement';
+import { Equipment } from 'src/app/models/equipment';
 import { EquipementService } from 'src/app/services/equipement.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { EquipementService } from 'src/app/services/equipement.service';
   styleUrls: ['./owner-equipement-detail.component.css']
 })
 export class OwnerEquipementDetailComponent implements OnInit {
-  equipementDisplayed: Equipement;
+  equipementDisplayed: Equipment;
   id: number;
 
   constructor(

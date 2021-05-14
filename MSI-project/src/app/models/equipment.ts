@@ -1,6 +1,6 @@
-import { EquipementType } from "./equipementType";
+import { EquipmentType } from "./equipmentType";
 
-export class Equipement {
+export class Equipment {
 
   constructor(
     private _id: number,
@@ -12,7 +12,7 @@ export class Equipement {
     private _size: string,
     private _description: string,
     private _year: string,
-    private _equipementType: EquipementType){}
+    private _equipmentType: EquipmentType){}
 
     public get year(): string {
       return this._year;
@@ -72,11 +72,11 @@ export class Equipement {
       this._id = value;
     }
 
-    public get equipementType(): EquipementType {
-      return this._equipementType;
+    public get equipmentType(): EquipmentType {
+      return this._equipmentType;
     }
-    public set equipementType(value: EquipementType) {
-      this._equipementType = value;
+    public set equipmentType(value: EquipmentType) {
+      this._equipmentType = value;
     }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, Form } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Equipement } from 'src/app/models/equipement';
+import { Equipment } from 'src/app/models/equipment';
 import { EquipementService } from 'src/app/services/equipement.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { EquipementService } from 'src/app/services/equipement.service';
 export class OwnerEquipementEditComponent implements OnInit {
 
   id: number;
-  equipement: Equipement;
+  equipement: Equipment;
   editMode = false;
 
   constructor(
@@ -29,7 +29,7 @@ export class OwnerEquipementEditComponent implements OnInit {
         this.equipement = this.equipementService.getEquipement(this.id);
       }
       else {
-        this.equipement = new Equipement(
+        this.equipement = new Equipment(
           this.equipementService.getEquipements().length + 2, "", "","", 0, 0, "", "","", null)
         console.log(this.equipement.id);
       }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Equipement } from 'src/app/models/equipement';
+import { Equipment } from 'src/app/models/equipment';
 
 @Component({
   selector: 'app-owner-equipement-item',
@@ -9,7 +9,7 @@ import { Equipement } from 'src/app/models/equipement';
 })
 export class OwnerEquipementItemComponent implements OnInit {
 
-  @Input() equipement: Equipement;
+  @Input() equipement: Equipment;
   @Input() id: number;
   constructor(
      private router: Router,

@@ -1,4 +1,4 @@
-export enum EquipementType {
+export enum EquipmentType {
   WETSUIT = "pianka",
   HARNESS = "trapez",
   KITEBOARD = "deska kitesurfingowa",

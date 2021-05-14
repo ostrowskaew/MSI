@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Equipement } from 'src/app/models/equipement';
+import { Equipment } from 'src/app/models/equipment';
 import { EquipementService } from 'src/app/services/equipement.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { EquipementService } from 'src/app/services/equipement.service';
 })
 export class OwnerEquipementListComponent implements OnInit {
   subscribtionEquipements : Subscription;
-  equipements: Equipement[] = []
+  equipements: Equipment[] = []
 
   constructor(private equipementService: EquipementService) { }
 
@@ -18,7 +18,7 @@ export class OwnerEquipementListComponent implements OnInit {
     this.equipements = this.equipementService.getEquipements();
 
     this.subscribtionEquipements = this.equipementService.equipementsChanged
-    .subscribe((Equipements: Equipement[]) => {
+    .subscribe((Equipements: Equipment[]) => {
       this.equipements = Equipements;
     })
   }
