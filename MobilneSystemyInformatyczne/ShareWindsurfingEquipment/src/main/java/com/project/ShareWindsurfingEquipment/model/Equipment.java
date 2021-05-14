@@ -17,6 +17,12 @@ public class Equipment {
     private String brand;
 
     @Column
+    private String model;
+
+    @Column
+    private String urlImage;
+
+    @Column
     private BigDecimal pricePerHour;
 
     @Column
@@ -34,6 +40,21 @@ public class Equipment {
     @Enumerated(EnumType.STRING)
     @Column
     private EquipmentType equipmentType;
+
+    public Equipment() {
+    }
+
+    public Equipment(String brand, String model, String urlImage, BigDecimal pricePerHour, int lenderInstructor, String size, String description, int year, String equipmentType) {
+        this.brand = brand;
+        this.model = model;
+        this.urlImage = urlImage;
+        this.pricePerHour = pricePerHour;
+        this.lenderInstructor = lenderInstructor;
+        this.size = size;
+        this.description = description;
+        this.year = year;
+        this.equipmentType = EquipmentType.valueOf(equipmentType);
+    }
 
     public Long getId() {
         return id;
@@ -97,6 +118,22 @@ public class Equipment {
 
     public void setEquipmentType(EquipmentType equipmentType) {
         this.equipmentType = equipmentType;
+    }
+
+    public String getModel() {
+        return this.model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getUrlImage() {
+        return this.urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
     }
 
     @Override

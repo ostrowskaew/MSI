@@ -40,7 +40,6 @@ public class UserAccount {
     }
 
     public UserAccount(String login, String password, String email, String description, boolean instructor, BigDecimal pricePerHour, String role) {
-
         this.login = login;
         this.password = password;
         this.email = email;

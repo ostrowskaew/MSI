@@ -1,5 +1,10 @@
 package com.project.ShareWindsurfingEquipment.common;
 
 public enum EquipmentType {
-    type
+    WINDSURFINGBOARD,
+    KITESURFINGBOARD,
+    SAIL,
+    KITE,
+    WETSUIT,
+    HARNESS
 }

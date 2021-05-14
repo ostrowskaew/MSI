@@ -10,7 +10,17 @@ public class EquipmentFactory {
 
     public Equipment createEquipment(EquipmentForm equipmentForm) {
 
-        return new Equipment();
+        return new Equipment(
+            equipmentForm.getBrand(),
+            equipmentForm.getModel(),
+            equipmentForm.getUrlImage(),
+            equipmentForm.getPricePerHour(),
+            0,
+            equipmentForm.getSize(),
+            equipmentForm.getDescription(),
+            equipmentForm.getYear(),
+            equipmentForm.getEquipmentType()
+        );
     }
 
     public EquipmentDto createEquipmentDto(Equipment equipment) {
