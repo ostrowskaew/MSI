@@ -44,6 +44,9 @@ export class OwnerEquipementDetailComponent implements OnInit {
 
   onDelete() {
     this.equipementService.deleteEquipment(this.id);
-    this.router.navigate(['owner-equipement']);
+    this.router.navigate(['owner-equipement'])
+    .then(() => {
+      window.location.reload();
+    });
   }
 }

@@ -87,7 +87,10 @@ export class OwnerEquipementEditComponent implements OnInit {
         data => console.log(data),
         error => console.log(error));;
     }
-    this.router.navigate(['/owner-equipement']);
+    this.router.navigate(['/owner-equipement'])
+    .then(() => {
+      window.location.reload();
+    });;
   }
 
   onCancel() {
