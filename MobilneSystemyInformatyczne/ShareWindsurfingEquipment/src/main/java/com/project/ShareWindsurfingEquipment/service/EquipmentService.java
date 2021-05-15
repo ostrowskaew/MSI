@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,30 +32,32 @@ public class EquipmentService {
     }
 
 
-    public void addNewEquipment(EquipmentForm equipmentForm) {
-
-        Assert.notNull(equipmentForm, "equipmentForm must not be null");
-
-        Equipment equipment = equipmentFactory.createEquipment(equipmentForm);
-
-        equipmentRepository.save(equipment);
+    public void addNewEquipment(Equipment equipmentForm) {
+        equipmentForm.setId((Long) equipmentForm.getId());
+        equipmentRepository.save(equipmentForm);
     }
 
-    public EquipmentDto getEquipmentById(Long id) {
-
-        Assert.notNull(id, "id must not be null");
-
-        Equipment equipment = equipmentRepository.getOne(id);
-
-        return equipmentFactory.createEquipmentDto(equipment);
+    public Equipment getEquipmentById(Long id) {
+        Optional<Equipment> optEquip = equipmentRepository.findById(id);
+		if (optEquip.isPresent()){
+		    Equipment pers = optEquip.get();
+		    return pers;
+		}
+		else{
+			return null;
+		}
     }
 
-    public List<EquipmentDto> getAllEquipments() {
+    public List<Equipment> getAllEquipments() {
 
-        List<Equipment> equipmentList = equipmentRepository.findAll();
-
-        return equipmentList.stream()
-                .map(equipmentFactory::createEquipmentDto)
-                .collect(Collectors.toList());
+        List<Equipment> equipments = new ArrayList<>();
+		equipmentRepository.findAll().forEach(equipments::add);
+		return equipments;
     }
+
+    public void deleteEquipment(Long id) {
+		equipmentRepository.deleteById(id);
+	}
+
+    
 }

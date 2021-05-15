@@ -1,8 +1,8 @@
 export enum EquipmentType {
   WETSUIT = "pianka",
   HARNESS = "trapez",
-  KITEBOARD = "deska kitesurfingowa",
-  WINDBOARD = "deska windsurfingowa",
+  KITESURFINGBOARD = "deska kitesurfingowa",
+  WINDSURFINGBOARD = "deska windsurfingowa",
   KITE = "latawiec",
   SAIL = "pędnik"
 }

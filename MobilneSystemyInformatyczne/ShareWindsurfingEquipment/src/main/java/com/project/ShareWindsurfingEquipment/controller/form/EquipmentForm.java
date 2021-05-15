@@ -3,20 +3,25 @@ package com.project.ShareWindsurfingEquipment.controller.form;
 import java.math.BigDecimal;
 
 public class EquipmentForm {
+    private Long id;
     private String brand;
     private String model;
     private String urlImage;
     private BigDecimal pricePerHour;
+    private int lenderInstructor;
+
     private String size;
     private String description;
     private int year;
     private String equipmentType;
 
  
-    public EquipmentForm(String brand, String model, String urlImage, BigDecimal pricePerHour, String size, String description, int year, String equipmentType) {
+    public EquipmentForm(Long id, String brand, String model, String urlImage, int lenderInstructor, BigDecimal pricePerHour, String size, String description, int year, String equipmentType) {
+        this.id = id;
         this.brand = brand;
         this.model = model;
         this.urlImage = urlImage;
+        this.lenderInstructor = lenderInstructor;
         this.pricePerHour = pricePerHour;
         this.size = size;
         this.description = description;
@@ -31,8 +36,21 @@ public class EquipmentForm {
         return this.brand;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    
+    public int getLenderInstructor() {
+        return this.lenderInstructor;
+    }
+
+    public void setLenderInstructor(int lenderInstructor) {
+        this.lenderInstructor = lenderInstructor;
     }
 
     public String getModel() {

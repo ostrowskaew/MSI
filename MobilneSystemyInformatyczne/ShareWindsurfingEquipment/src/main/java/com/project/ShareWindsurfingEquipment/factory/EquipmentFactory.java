@@ -15,7 +15,7 @@ public class EquipmentFactory {
             equipmentForm.getModel(),
             equipmentForm.getUrlImage(),
             equipmentForm.getPricePerHour(),
-            0,
+            equipmentForm.getLenderInstructor(),
             equipmentForm.getSize(),
             equipmentForm.getDescription(),
             equipmentForm.getYear(),

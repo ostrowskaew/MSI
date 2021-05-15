@@ -35,7 +35,7 @@ class UserLoginController {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getLogin(),loginRequest.getPassword()));
         String token = tokenProvider.generateToken(authentication);
-        LoginResponse loginResponse = new LoginResponse(token,authentication.getAuthorities().toString());
+        LoginResponse loginResponse = new LoginResponse(token,authentication.getAuthorities().toString() );
 
         return ResponseEntity.ok(loginResponse);
     }

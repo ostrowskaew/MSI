@@ -34,8 +34,6 @@ export class AuthComponent {
       },
       (err) => {
         alert('Wprowadzono błędne dane!');
-        this.form.username.setValue('');
-        this.form.password.setValue('');
         console.log(err);
       }
     );

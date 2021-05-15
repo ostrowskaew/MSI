@@ -5,6 +5,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../dto/user';
 import { tap } from 'rxjs/operators';
 import { UserLogIn } from '../dto/user-log-in';
+import { UserAccount } from '../models/UserAccount';
+
+const TOKEN_KEY = 'auth-token';
+const USER_KEY = 'auth-user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +18,7 @@ export class AuthService {
   private endpointSignUp = 'http://localhost:9090/user';
   userLogin: UserLogIn;
   userDto: User;
+  currentUser: UserAccount;
   private isLoggedIn = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
@@ -26,9 +31,12 @@ export class AuthService {
         tap((usrLogin) => {
           this.cookieService.set('token', usrLogin.token);
           localStorage.setItem('role', usrLogin.role);
+          localStorage.setItem('id', usrLogin.id);
           this.userLogin = usrLogin;
           this.isLoggedIn.next(true);
           this.userDto = user;
+          console.log(usrLogin);
+
         })
       );
   }
@@ -60,5 +68,9 @@ export class AuthService {
 
   getUserRole(): string {
     return this.userLogin.role;
+  }
+
+  public getUser() {
+    return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
 }

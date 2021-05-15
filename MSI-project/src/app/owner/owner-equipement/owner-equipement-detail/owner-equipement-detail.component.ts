@@ -19,20 +19,31 @@ export class OwnerEquipementDetailComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe( params => {
+    this.route.params
+    .subscribe(
+      params => {
       this.id = +params['id'];
-      this.equipementDisplayed = this.equipementService.getEquipement(this.id);
+
+    console.log(this.id);
+      this.equipementService.getEquipment(this.id)
+      .subscribe(
+        eq => this.equipementDisplayed = eq
+
+      )
     }
     );
 
+    console.log(this.id);
+
   }
+
 
   onEdit() {
     this.router.navigate(['edit'], {relativeTo: this.route});
   }
 
   onDelete() {
-    this.equipementService.deleteEquipement(this.id);
-    this.router.navigate(['/owner-equipement']);
+    this.equipementService.deleteEquipment(this.id);
+    this.router.navigate(['owner-equipement']);
   }
 }

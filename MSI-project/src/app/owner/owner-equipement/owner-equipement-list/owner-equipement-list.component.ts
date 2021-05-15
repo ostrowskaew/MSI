@@ -15,9 +15,7 @@ export class OwnerEquipementListComponent implements OnInit {
   constructor(private equipementService: EquipementService) { }
 
   ngOnInit(): void {
-    this.equipements = this.equipementService.getEquipements();
-
-    this.subscribtionEquipements = this.equipementService.equipementsChanged
+    this.subscribtionEquipements = this.equipementService.getEquipments()
     .subscribe((Equipements: Equipment[]) => {
       this.equipements = Equipements;
     })
@@ -26,5 +24,6 @@ export class OwnerEquipementListComponent implements OnInit {
   ngOnDestroy() {
     this.subscribtionEquipements.unsubscribe();
   }
+
 
 }

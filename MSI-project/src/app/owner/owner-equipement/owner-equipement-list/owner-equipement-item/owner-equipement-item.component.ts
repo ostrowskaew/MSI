@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
+import { EquipementService } from 'src/app/services/equipement.service';
 
 @Component({
   selector: 'app-owner-equipement-item',
@@ -10,17 +11,14 @@ import { Equipment } from 'src/app/models/equipment';
 export class OwnerEquipementItemComponent implements OnInit {
 
   @Input() equipement: Equipment;
-  @Input() id: number;
   constructor(
      private router: Router,
-     private route: ActivatedRoute) { }
+     private route: ActivatedRoute,
+     private equipmentService: EquipementService) { }
 
   ngOnInit(): void {
 
   }
 
-  onSelect(){
-    this.router.navigate([this.id], {relativeTo: this.route});
-  }
 
 }

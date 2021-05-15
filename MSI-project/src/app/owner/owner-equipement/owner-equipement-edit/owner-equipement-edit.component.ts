@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, Form } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
+import { EquipmentType } from 'src/app/models/equipmentType';
 import { EquipementService } from 'src/app/services/equipement.service';
+
 
 @Component({
   selector: 'app-owner-equipement-edit',
@@ -12,13 +14,33 @@ import { EquipementService } from 'src/app/services/equipement.service';
 export class OwnerEquipementEditComponent implements OnInit {
 
   id: number;
-  equipement: Equipment;
+  equipement: any;
   editMode = false;
+  type : EquipmentType;
+
+  dictionary = {
+    'trapez': 'HARNESS',
+    'latawiec': 'KITE',
+    'deska kitesurfingowa': 'KITEBOARD',
+    'p\u0119dnik': 'SAIL',
+    'pianka': 'WETSUIT',
+    'deska windsurfingowa': 'WINDBOARD',
+  };
+
+  equipmentTypes = [                        // <-- you still need the array
+    EquipmentType.HARNESS,
+    EquipmentType.KITE,
+    EquipmentType.KITESURFINGBOARD,
+    EquipmentType.SAIL,
+    EquipmentType.WETSUIT,
+    EquipmentType.WINDSURFINGBOARD
+  ];
 
   constructor(
     private route: ActivatedRoute,
     private equipementService: EquipementService,
-    private router: Router) { }
+    private router: Router) {
+     }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -26,24 +48,44 @@ export class OwnerEquipementEditComponent implements OnInit {
       this.editMode = params['id'] != -1;
       console.log(this.id);
       if(this.editMode) {
-        this.equipement = this.equipementService.getEquipement(this.id);
+        this.equipementService.getEquipment(this.id)
+        .subscribe(eq => this.equipement = eq);
       }
       else {
-        this.equipement = new Equipment(
-          this.equipementService.getEquipements().length + 2, "", "","", 0, 0, "", "","", null)
-        console.log(this.equipement.id);
+        this.initEquipment();
       }
     })
+  }
 
-
+  initEquipment() {
+    this.equipement = {
+      urlImage: '',
+      brand: '',
+      model:'',
+      pricePerHour: 0,
+      lenderInstructor: 1,
+      size: '',
+      year: '',
+      equipmentType : 'HARNESS'
+    }
   }
 
   onSubmit() {
+
+    if (this.dictionary.hasOwnProperty(this.type)) {
+      this.equipement.equipmentType = this.dictionary[this.type];
+    }
     if(this.editMode) {
-      this.equipementService.updateEquipement(this.id, this.equipement);
+      this.equipementService.addEquipment(this.equipement)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error));
     }
     else {
-      this.equipementService.addEquipement(this.equipement);
+      this.equipementService.addEquipment(this.equipement)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error));;
     }
     this.router.navigate(['/owner-equipement']);
   }

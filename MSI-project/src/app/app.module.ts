@@ -14,6 +14,7 @@ import { EquipementService } from './services/equipement.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppRoutingModule,
     FormsModule,
     OwnerModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [EquipementService,
   CookieService,
