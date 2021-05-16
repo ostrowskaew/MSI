@@ -1,3 +1,4 @@
+
 <div class = "row">
   <div class="col-xs-12">
     <button class="btn btn-success" routerLink="-1/edit">Dodaj sprzęt</button>
@@ -8,9 +9,12 @@
 
 <div class = "row">
   <div class="col-xs-12">
-
-    <app-owner-equipement-item *ngFor="let equipement of equipements" [equipement] = "equipement"> </app-owner-equipement-item>
-
+    <app-owner-equipement-item
+    *ngFor="let equipement of equipements"
+    [equipement] = "equipement"
+    (selectedChanged)="selectedHandler($event)"
+    >
+  </app-owner-equipement-item>
   </div>
 
 </div>

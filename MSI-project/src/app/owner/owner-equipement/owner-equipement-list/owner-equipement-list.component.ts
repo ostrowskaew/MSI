@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipementService } from 'src/app/services/equipement.service';
@@ -10,7 +10,9 @@ import { EquipementService } from 'src/app/services/equipement.service';
 })
 export class OwnerEquipementListComponent implements OnInit {
   subscribtionEquipements : Subscription;
-  equipements: Equipment[] = []
+  equipements: Equipment[] = [];
+  selected = false;
+  @Output() selectedChanged: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private equipementService: EquipementService) { }
 
@@ -19,10 +21,18 @@ export class OwnerEquipementListComponent implements OnInit {
     .subscribe((Equipements: Equipment[]) => {
       this.equipements = Equipements;
     })
+
   }
 
   ngOnDestroy() {
     this.subscribtionEquipements.unsubscribe();
+  }
+
+  selectedHandler(selected: boolean) {
+    this.selected = selected;
+    this.selectedChanged.emit(selected);
+    console.log("List:" + this.selected);
+
   }
 
 

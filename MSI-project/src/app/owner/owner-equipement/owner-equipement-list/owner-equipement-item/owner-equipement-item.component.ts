@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipementService } from 'src/app/services/equipement.service';
@@ -11,6 +11,8 @@ import { EquipementService } from 'src/app/services/equipement.service';
 export class OwnerEquipementItemComponent implements OnInit {
 
   @Input() equipement: Equipment;
+  @Output() selectedChanged: EventEmitter<boolean> = new EventEmitter();
+
   constructor(
      private router: Router,
      private route: ActivatedRoute,
@@ -18,6 +20,10 @@ export class OwnerEquipementItemComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  onSelect() {
+    this.selectedChanged.emit(true);
   }
 
 
