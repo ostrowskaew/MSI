@@ -26,7 +26,7 @@ public class Equipment {
     private BigDecimal pricePerHour;
 
     @Column
-    private int lenderInstructor;
+    private String lenderInstructor;
 
     @Column
     private String size;
@@ -44,7 +44,7 @@ public class Equipment {
     public Equipment() {
     }
 
-    public Equipment(String brand, String model, String urlImage, BigDecimal pricePerHour, int lenderInstructor, String size, String description, int year, String equipmentType) {
+    public Equipment(String brand, String model, String urlImage, BigDecimal pricePerHour, String lenderInstructor, String size, String description, int year, String equipmentType) {
         this.brand = brand;
         this.model = model;
         this.urlImage = urlImage;
@@ -80,11 +80,11 @@ public class Equipment {
         this.pricePerHour = pricePerHour;
     }
 
-    public int getLenderInstructor() {
+    public String getLenderInstructor() {
         return lenderInstructor;
     }
 
-    public void setLenderInstructor(int lenderInstructor) {
+    public void setLenderInstructor(String lenderInstructor) {
         this.lenderInstructor = lenderInstructor;
     }
 

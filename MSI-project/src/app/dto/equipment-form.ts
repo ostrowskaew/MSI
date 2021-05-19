@@ -5,6 +5,7 @@ export interface EquipementForm {
    brand: string,
    model: string,
    pricePerHour: number,
+   lenderInstructor: string;
    size: string,
    description: string,
    year: string,

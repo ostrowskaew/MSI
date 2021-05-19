@@ -1,16 +1,12 @@
 package com.project.ShareWindsurfingEquipment.controller;
 
-import com.project.ShareWindsurfingEquipment.controller.dto.EquipmentDto;
-import com.project.ShareWindsurfingEquipment.controller.form.EquipmentForm;
 import com.project.ShareWindsurfingEquipment.model.Equipment;
 import com.project.ShareWindsurfingEquipment.service.EquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.Console;
 import java.util.List;
 
 import static com.project.ShareWindsurfingEquipment.controller.EquipmentController.URL_PATH;
@@ -38,6 +34,12 @@ class EquipmentController {
     public ResponseEntity<List<Equipment>> getAllEquipments() {
 
         return ResponseEntity.ok(equipmentService.getAllEquipments());
+    }
+
+    @GetMapping("/lender/{lender}")
+    public ResponseEntity<List<Equipment>> getLendersEquipments(@PathVariable String lender) {
+
+        return ResponseEntity.ok(equipmentService.getLendersEquipments(lender));
     }
 
     @GetMapping("/{id}")

@@ -8,7 +8,7 @@ public class EquipmentForm {
     private String model;
     private String urlImage;
     private BigDecimal pricePerHour;
-    private int lenderInstructor;
+    private String lenderInstructor;
 
     private String size;
     private String description;
@@ -16,7 +16,7 @@ public class EquipmentForm {
     private String equipmentType;
 
  
-    public EquipmentForm(Long id, String brand, String model, String urlImage, int lenderInstructor, BigDecimal pricePerHour, String size, String description, int year, String equipmentType) {
+    public EquipmentForm(Long id, String brand, String model, String urlImage, String lenderInstructor, BigDecimal pricePerHour, String size, String description, int year, String equipmentType) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -45,11 +45,11 @@ public class EquipmentForm {
     }
 
     
-    public int getLenderInstructor() {
+    public String getLenderInstructor() {
         return this.lenderInstructor;
     }
 
-    public void setLenderInstructor(int lenderInstructor) {
+    public void setLenderInstructor(String lenderInstructor) {
         this.lenderInstructor = lenderInstructor;
     }
 

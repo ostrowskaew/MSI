@@ -20,6 +20,7 @@ export class AuthService {
   userDto: User;
   currentUser: UserAccount;
   private isLoggedIn = new BehaviorSubject<boolean>(false);
+  private usernameLoggedIn = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
@@ -31,10 +32,10 @@ export class AuthService {
         tap((usrLogin) => {
           this.cookieService.set('token', usrLogin.token);
           localStorage.setItem('role', usrLogin.role);
-          localStorage.setItem('id', usrLogin.id);
           this.userLogin = usrLogin;
           this.isLoggedIn.next(true);
           this.userDto = user;
+          this.usernameLoggedIn.next(this.userDto.login);
           console.log(usrLogin);
 
         })
@@ -52,6 +53,7 @@ export class AuthService {
           this.userLogin = usrSignUp;
           this.isLoggedIn.next(true);
           this.userDto = user;
+          this.usernameLoggedIn.next(this.userDto.login);
         })
       );
   }
@@ -60,17 +62,18 @@ export class AuthService {
     return this.isLoggedIn.asObservable();
   }
 
+  get usernameSignedIn(): Observable<string> {
+    return this.usernameLoggedIn.asObservable();
+  }
+
   logout(): void {
     this.cookieService.delete('token', this.userLogin.token);
     localStorage.removeItem('role');
     this.isLoggedIn.next(false);
+    this.usernameLoggedIn.next("");
   }
 
   getUserRole(): string {
     return this.userLogin.role;
-  }
-
-  public getUser() {
-    return JSON.parse(sessionStorage.getItem(USER_KEY));
   }
 }

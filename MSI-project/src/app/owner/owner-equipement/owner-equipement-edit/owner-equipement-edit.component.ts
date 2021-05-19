@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, Form } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentType } from 'src/app/models/equipmentType';
+import { AuthService } from 'src/app/services/auth.service';
 import { EquipementService } from 'src/app/services/equipement.service';
 
 
@@ -11,12 +13,14 @@ import { EquipementService } from 'src/app/services/equipement.service';
   templateUrl: './owner-equipement-edit.component.html',
   styleUrls: ['./owner-equipement-edit.component.css']
 })
-export class OwnerEquipementEditComponent implements OnInit {
+export class OwnerEquipementEditComponent implements OnInit, OnDestroy {
 
   id: number;
   equipement: any;
   editMode = false;
   type : EquipmentType;
+  usernameSub: Subscription;
+  login: string;
 
   dictionary = {
     'trapez': 'HARNESS',
@@ -39,7 +43,8 @@ export class OwnerEquipementEditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private equipementService: EquipementService,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
      }
 
   ngOnInit(): void {
@@ -47,6 +52,7 @@ export class OwnerEquipementEditComponent implements OnInit {
       this.id= +params['id'];
       this.editMode = params['id'] != -1;
       console.log(this.id);
+
       if(this.editMode) {
         this.equipementService.getEquipment(this.id)
         .subscribe(eq => this.equipement = eq);
@@ -55,6 +61,11 @@ export class OwnerEquipementEditComponent implements OnInit {
         this.initEquipment();
       }
     })
+
+    this.usernameSub = this.authService.usernameSignedIn
+    .subscribe(user => {
+      this.login = user;
+    });
   }
 
   initEquipment() {
@@ -63,7 +74,7 @@ export class OwnerEquipementEditComponent implements OnInit {
       brand: '',
       model:'',
       pricePerHour: 0,
-      lenderInstructor: 1,
+      lenderInstructor: "",
       size: '',
       year: '',
       equipmentType : 'HARNESS'
@@ -71,6 +82,7 @@ export class OwnerEquipementEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this.equipement.lenderInstructor = this.login;
 
     if (this.dictionary.hasOwnProperty(this.type)) {
       this.equipement.equipmentType = this.dictionary[this.type];
@@ -95,6 +107,10 @@ export class OwnerEquipementEditComponent implements OnInit {
 
   onCancel() {
     this.router.navigate(['/owner-equipement']);
+  }
+
+  ngOnDestroy() :void {
+    this.usernameSub.unsubscribe();
   }
 
 }

@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
-    public List<Equipment> findByLenderInstructor(Long lender);
+    public List<Equipment> findByLenderInstructor(String lender);
 }

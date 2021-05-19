@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Equipment } from 'src/app/models/equipment';
+import { AuthService } from 'src/app/services/auth.service';
 import { EquipementService } from 'src/app/services/equipement.service';
 
 @Component({
@@ -8,24 +9,32 @@ import { EquipementService } from 'src/app/services/equipement.service';
   templateUrl: './owner-equipement-list.component.html',
   styleUrls: ['./owner-equipement-list.component.css']
 })
-export class OwnerEquipementListComponent implements OnInit {
+export class OwnerEquipementListComponent implements OnInit, OnDestroy {
   subscribtionEquipements : Subscription;
   equipements: Equipment[] = [];
   selected = false;
   @Output() selectedChanged: EventEmitter<boolean> = new EventEmitter();
+  usernameSub: Subscription;
+  login: string;
 
-  constructor(private equipementService: EquipementService) { }
+
+  constructor(
+    private equipementService: EquipementService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
-    this.subscribtionEquipements = this.equipementService.getEquipments()
+
+    this.usernameSub = this.authService.usernameSignedIn
+    .subscribe(user => {
+      this.login = user;
+    });
+
+    this.subscribtionEquipements = this.equipementService.getOwnersEquipment(this.login)
     .subscribe((Equipements: Equipment[]) => {
       this.equipements = Equipements;
-    })
+    });
 
-  }
-
-  ngOnDestroy() {
-    this.subscribtionEquipements.unsubscribe();
   }
 
   selectedHandler(selected: boolean) {
@@ -35,5 +44,10 @@ export class OwnerEquipementListComponent implements OnInit {
 
   }
 
+  ngOnDestroy() :void {
+    this.usernameSub.unsubscribe();
+    this.subscribtionEquipements.unsubscribe();
+
+  }
 
 }

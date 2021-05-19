@@ -8,7 +8,7 @@ export class Equipment {
     private _brand: string,
     private _model: string,
     private _pricePerHour: number,
-    private _lenderInstructor: number,
+    private _lenderInstructor: string,
     private _size: string,
     private _description: string,
     private _year: string,
@@ -53,10 +53,10 @@ export class Equipment {
     public set brand(value: string) {
       this._brand = value;
     }
-    public get lenderInstructor(): number {
+    public get lenderInstructor(): string {
       return this._lenderInstructor;
     }
-    public set lenderInstructor(value: number) {
+    public set lenderInstructor(value: string) {
       this._lenderInstructor = value;
     }
     public get pricePerHour(): number {

@@ -37,5 +37,9 @@ export class EquipementService {
     .subscribe(eq => console.log(eq));
   }
 
+  getOwnersEquipment(lender: string): Observable<any>  {
+    const url = `${this.endpoint}/lender/${lender}`;
+    return this.http.get(url);
+  }
 
 }

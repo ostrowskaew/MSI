@@ -15,6 +15,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { UserRentalComponent } from './user/user-rental/user-rental.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HeaderComponent,
     AuthComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    UserProfileComponent,
+    UserRentalComponent
 
   ],
   imports: [

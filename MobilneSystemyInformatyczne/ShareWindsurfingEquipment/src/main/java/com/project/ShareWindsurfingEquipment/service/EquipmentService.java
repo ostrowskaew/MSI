@@ -55,6 +55,13 @@ public class EquipmentService {
 		return equipments;
     }
 
+    public List<Equipment> getLendersEquipments(String lender) {
+
+        List<Equipment> equipments = new ArrayList<>();
+		equipmentRepository.findByLenderInstructor(lender).forEach(equipments::add);
+		return equipments;
+    }
+
     public void deleteEquipment(Long id) {
 		equipmentRepository.deleteById(id);
 	}
