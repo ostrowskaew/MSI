@@ -17,6 +17,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserRentalComponent } from './user/user-rental/user-rental.component';
+import { ProfileItemComponent } from './user/user-profile/profile-item/profile-item.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserRentalComponent } from './user/user-rental/user-rental.component';
     SignupComponent,
     HomeComponent,
     UserProfileComponent,
-    UserRentalComponent
+    UserRentalComponent,
+    ProfileItemComponent
 
   ],
   imports: [
@@ -38,8 +40,9 @@ import { UserRentalComponent } from './user/user-rental/user-rental.component';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [EquipementService,
-  CookieService,
+  providers: [
+    EquipementService,
+    CookieService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

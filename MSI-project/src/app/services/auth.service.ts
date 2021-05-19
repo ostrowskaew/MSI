@@ -37,7 +37,7 @@ export class AuthService {
           this.userDto = user;
           this.usernameLoggedIn.next(this.userDto.login);
           console.log(usrLogin);
-
+          this.getCurrentUser();
         })
       );
   }
@@ -54,6 +54,7 @@ export class AuthService {
           this.isLoggedIn.next(true);
           this.userDto = user;
           this.usernameLoggedIn.next(this.userDto.login);
+          this.getCurrentUser();
         })
       );
   }
@@ -64,6 +65,17 @@ export class AuthService {
 
   get usernameSignedIn(): Observable<string> {
     return this.usernameLoggedIn.asObservable();
+  }
+
+  getUser(username: string) : UserAccount {
+    const url = `${this.endpointSignUp}/${username}`;
+      this.http.get<UserAccount>(url)
+      .subscribe(user => this.currentUser = user);
+    return this.currentUser;
+  }
+
+  getCurrentUser() {
+    return this.getUser(this.userDto.login);
   }
 
   logout(): void {

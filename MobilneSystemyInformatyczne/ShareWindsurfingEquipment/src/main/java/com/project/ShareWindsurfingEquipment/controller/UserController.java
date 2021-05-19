@@ -2,8 +2,11 @@ package com.project.ShareWindsurfingEquipment.controller;
 
 import com.project.ShareWindsurfingEquipment.controller.form.UserForm;
 import com.project.ShareWindsurfingEquipment.model.LoginRequest;
+import com.project.ShareWindsurfingEquipment.model.UserAccount;
 import com.project.ShareWindsurfingEquipment.service.UserService;
 import io.jsonwebtoken.lang.Assert;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,5 +29,11 @@ class UserController {
     private LoginRequest addUser(@RequestBody UserForm userForm) {
 
         return userService.saveOrUpdate(userForm);
+    }
+
+    @GetMapping("/{username}")
+    public ResponseEntity<UserAccount> getUserAccountByLogin(@PathVariable String username) {
+
+        return ResponseEntity.ok(userService.getUserByUsername(username));
     }
 }

@@ -1,5 +1,8 @@
 package com.project.ShareWindsurfingEquipment.service;
 
+import java.util.Optional;
+
+import com.project.ShareWindsurfingEquipment.common.ResourceNotFoundException;
 import com.project.ShareWindsurfingEquipment.controller.form.UserForm;
 import com.project.ShareWindsurfingEquipment.factory.UserFactory;
 import com.project.ShareWindsurfingEquipment.model.LoginRequest;
@@ -29,5 +32,15 @@ public class UserService {
         UserAccount savedUser = userAccountRepository.save(userAccount);
 
         return userFactory.createLoginRequest(savedUser);
+    }
+
+    public UserAccount getUserByUsername(String login) { 
+        UserAccount userAccount = userAccountRepository.getByLogin(login);
+
+        if (userAccount == null) {
+            throw new ResourceNotFoundException("User", login);
+        }
+
+        return userAccount;
     }
 }

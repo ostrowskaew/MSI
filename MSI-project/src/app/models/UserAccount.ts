@@ -20,6 +20,10 @@ export class UserAccount {
   public set role(value: Role) {
     this._role = value;
   }
+  public get login(): string {
+    return this._login;
+  }
+
   public get pricePerHour(): number {
     return this._pricePerHour;
   }
@@ -53,14 +57,5 @@ export class UserAccount {
   public get id(): number {
     return this._id;
   }
-  public set id(value: number) {
-    this._id = value;
-  }
 
-  public get login(): string {
-    return this.login;
-  }
-  public set login(value: string) {
-    this.login = value;
-  }
 }

@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { OwnerEquipementDetailComponent } from "./owner/owner-equipement/owner-equipement-detail/owner-equipement-detail.component";
 import { OwnerEquipementEditComponent } from "./owner/owner-equipement/owner-equipement-edit/owner-equipement-edit.component";
 import { OwnerEquipementComponent } from "./owner/owner-equipement/owner-equipement.component";
