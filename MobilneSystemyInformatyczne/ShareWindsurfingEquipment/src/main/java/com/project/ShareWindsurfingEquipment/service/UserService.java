@@ -1,8 +1,9 @@
 package com.project.ShareWindsurfingEquipment.service;
 
-import java.util.Optional;
+import java.math.BigDecimal;
 
 import com.project.ShareWindsurfingEquipment.common.ResourceNotFoundException;
+import com.project.ShareWindsurfingEquipment.common.StringToEnumConverter;
 import com.project.ShareWindsurfingEquipment.controller.form.UserForm;
 import com.project.ShareWindsurfingEquipment.factory.UserFactory;
 import com.project.ShareWindsurfingEquipment.model.LoginRequest;
@@ -43,4 +44,43 @@ public class UserService {
 
         return userAccount;
     }
+
+    public UserAccount updateDescription(String login, String description) {
+       
+        UserAccount userAccount = getUserByUsername(login);
+
+        userAccount.setDescription(description);
+        userAccountRepository.save(userAccount);
+        return userAccount;
+
+    }
+
+    public UserAccount updatePricePerHour(String login, BigDecimal price) {
+       
+        UserAccount userAccount = getUserByUsername(login);
+
+        userAccount.setPricePerHour(price);
+        userAccountRepository.save(userAccount);
+        return userAccount;
+
+    }
+
+    public UserAccount updateIsInstructor(String login, Boolean isInstructor) {
+       
+        UserAccount userAccount = getUserByUsername(login);
+
+        userAccount.setInstructor(isInstructor);
+        userAccountRepository.save(userAccount);
+        return userAccount;
+    }
+
+    public UserAccount updateRole(String login, String role) {
+       
+        UserAccount userAccount = getUserByUsername(login);
+        StringToEnumConverter converter = new StringToEnumConverter();
+        userAccount.setRole(converter.convert(role));
+        userAccountRepository.save(userAccount);
+        return userAccount;
+    }
+    
 }

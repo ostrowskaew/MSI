@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Role } from 'src/app/models/role';
 import { UserAccount } from 'src/app/models/UserAccount';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserAccountService } from 'src/app/services/userAccount.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,12 +12,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class UserProfileComponent implements OnInit {
 
   currentUser : UserAccount;
-  descriptionChange = false;
-  priceChange = false;
   user = Role.USER;
   owner = Role.USER2;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private UserAccountService: UserAccountService) {
     this.currentUser = this.authService.getCurrentUser();
     console.log(this.currentUser);
   }
@@ -24,22 +23,22 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeDescription() : void {
-    this.descriptionChange = !this.descriptionChange;
+  changeDescription(description: any) : void {
+    this.UserAccountService.updateDescription(description, this.currentUser.login );
   }
 
-  changePrice() : void {
-    this.priceChange = !this.priceChange;
+  changePrice(price: any) : void {
+    this.UserAccountService.updatePricePerHour(price, this.currentUser.login);
   }
 
   startTeaching() {
     this.currentUser.instructor = true;
+    this.UserAccountService.updateIsInstructor(true, this.currentUser.login);
   }
 
   rentEquipment() {
     this.currentUser.role = Role.USER2 ;
-    console.log(this.currentUser);
-
+    this.UserAccountService.updateRole(Role.USER2, this.currentUser.login);
   }
 
 }

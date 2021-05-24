@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserAccount } from 'src/app/models/UserAccount';
 
 @Component({
@@ -11,6 +11,7 @@ export class ProfileItemComponent implements OnInit {
   @Input() itemName : string;
   @Input() item : any;
   @Input() label : string;
+  @Output() newValue: EventEmitter<any> = new EventEmitter();
   isItemChanged = false;
 
   constructor() { }
@@ -20,6 +21,9 @@ export class ProfileItemComponent implements OnInit {
 
   onItemChanged() {
     this.isItemChanged = !this.isItemChanged;
+    if(this.isItemChanged == false) {
+      this.newValue.emit(this.item);
+    }
   }
 
 }

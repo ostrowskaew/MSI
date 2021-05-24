@@ -18,6 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserRentalComponent } from './user/user-rental/user-rental.component';
 import { ProfileItemComponent } from './user/user-profile/profile-item/profile-item.component';
+import { UserAccount } from './models/UserAccount';
+import { UserAccountService } from './services/userAccount.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { ProfileItemComponent } from './user/user-profile/profile-item/profile-i
   providers: [
     EquipementService,
     CookieService,
+    UserAccountService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

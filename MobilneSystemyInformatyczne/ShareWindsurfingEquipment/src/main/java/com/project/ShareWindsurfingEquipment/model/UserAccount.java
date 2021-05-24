@@ -2,11 +2,14 @@ package com.project.ShareWindsurfingEquipment.model;
 
 import com.project.ShareWindsurfingEquipment.common.Role;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
 @Table
+@DynamicUpdate
 public class UserAccount {
 
     @Id

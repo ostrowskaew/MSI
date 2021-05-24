@@ -7,9 +7,6 @@ import { tap } from 'rxjs/operators';
 import { UserLogIn } from '../dto/user-log-in';
 import { UserAccount } from '../models/UserAccount';
 
-const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
-
 @Injectable({
   providedIn: 'root'
 })

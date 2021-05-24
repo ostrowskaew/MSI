@@ -51,6 +51,7 @@
                 itemName = description
                 [item] = "currentUser.description"
                 label = Opis
+                (newValue) = "changeDescription($event)"
                 ></app-profile-item>
 
                 <hr />
@@ -61,6 +62,7 @@
                 itemName = pricePerHour
                 [item] = "currentUser.pricePerHour"
                 [label] = "'Cena za godzinę'"
+                (newValue) = "changePrice($event)"
                 ></app-profile-item>
                 </div>
 
