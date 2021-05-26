@@ -8,6 +8,7 @@ import { UserRentalComponent } from './user/user-rental/user-rental.component';
 
 const routes: Routes = [
   { path: 'owner-equipement', loadChildren: () => import('./owner.module').then(m => m.OwnerModule) },
+  { path: 'rent-equipment', loadChildren: () => import('./rent-equipment.module').then(m => m.RentEquipmentModule) },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: AuthComponent },

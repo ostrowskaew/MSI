@@ -18,8 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserRentalComponent } from './user/user-rental/user-rental.component';
 import { ProfileItemComponent } from './user/user-profile/profile-item/profile-item.component';
-import { UserAccount } from './models/UserAccount';
 import { UserAccountService } from './services/userAccount.service';
+import { RentEquipmentModule } from './rent-equipment.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +39,7 @@ import { UserAccountService } from './services/userAccount.service';
     AppRoutingModule,
     FormsModule,
     OwnerModule,
+    RentEquipmentModule,
     HttpClientModule,
     BrowserAnimationsModule
   ],
