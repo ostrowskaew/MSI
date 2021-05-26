@@ -1,3 +1,21 @@
-<p>
-  equipment-list works!
-</p>
+<button *ngIf = "selected"
+              class="btn btn-secondary pl-2"
+              type="button"
+              id="dropdownMenuButton"
+              aria-expanded="false"
+              (click)="toMenu()">
+                Cofnij
+              </button>
+
+<h2 *ngIf="selected">Sprzęt tego samego wypożyczającego</h2>
+<div class = "row">
+  <div class="col-xs-12">
+    <app-equipment-item
+    *ngFor="let equipement of equipements"
+    [equipement] = "equipement"
+    (equipmentChanged)="selectedHandler($event)"
+    >
+  </app-equipment-item>
+  </div>
+
+</div>

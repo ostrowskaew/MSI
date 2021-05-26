@@ -1,3 +1,28 @@
-<p>
-  equipment-item works!
-</p>
+
+<a
+style="cursor: pointer"
+class ="list-group-item clearfix mt-2"
+[routerLink]="[equipement.id]"
+routerLinkActive="active"
+(click)="onSelect()">
+<div class="pull-left">
+  <div class="row">
+    <div class="col-7">
+      <h4 class="list-group-item-heading"> {{equipement.brand}} {{equipement.model}}</h4>
+      <p class="list-item">{{equipement.size}}</p>
+      <p class="list-item">{{equipement.year}}</p>
+      <p class="list-item">{{equipement.lenderInstructor}}</p>
+    </div>
+    <div class="col-4">
+      <span class="pull-right">
+        <img src="{{equipement.urlImage}}"
+        alt="{{equipement.description}}"
+        class="image-responsive"
+        style="height: 150px; width: 150px; object-fit: cover;">
+      </span>
+    </div>
+  </div>
+
+</div>
+
+</a>

@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rental-equipment.component.css']
 })
 export class RentalEquipmentComponent implements OnInit {
-
-  constructor() { }
+  selected : boolean;
+  constructor() {}
 
   ngOnInit() {
+    this.selected = false;
+
   }
 
+  handleSelected(selected: boolean) {
+    this.selected = selected;
+
+  }
 }

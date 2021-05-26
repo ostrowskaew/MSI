@@ -1,3 +1,99 @@
-<p>
-  equipment-detail works!
-</p>
+
+<div class="row" *ngIf="equipementDisplayed">
+  <div class="col-1"></div>
+
+  <div class="col-lg-10 pl-lg-3 col-xs-12 col-sm-12">
+    <div class="row" >
+      <div class="col" >
+        <div class="row">
+          <div class="col-xs-12 mb-2">
+            <div class="button-group">
+
+              <button
+              class="btn btn-success ml-2"
+              type="button"
+              id="dropdownMenuButton"
+              aria-expanded="false"
+              (click)="makeReservation()">
+                Zarezerwuj
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="img ">
+          <img [src]="equipementDisplayed.urlImage"
+          alt= "{{equipementDisplayed.brand}} {{equipementDisplayed.size}}"
+          class="image-responsive"
+          style="height: 400px; max-width: 100%; object-fit: cover;"
+        >
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-xs-12 mt-2 text-uppercase font-weight-bold">
+          <h1>{{equipementDisplayed.brand}} {{equipementDisplayed.model}} {{equipementDisplayed.size}}</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="attribute col-3">
+        Marka:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.brand}}
+      </div>
+
+      <div class="attribute col-3">
+        Model:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.model}}
+      </div>
+
+      <div class="attribute col-3">
+        Cena za godzinę:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.pricePerHour}} zł
+      </div>
+
+      <div class="attribute col-3">
+        Wielkość:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.size}}
+      </div>
+
+
+      <div class="attribute col-3">
+        Rok produkcji:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.year}}
+      </div>
+      <div class="attribute col-3">
+        Typ:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.equipmentType}}
+      </div>
+      <div class="attribute col-3">
+        Wypożyczający:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.lenderInstructor}}
+      </div>
+      <hr>
+      <div class="attribute col-3">
+        Opis:
+      </div>
+      <div class="col-9" >
+        {{equipementDisplayed.description}}
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

@@ -1,3 +1,24 @@
-<p>
-  rental-equipment works!
-</p>
+
+<div class="container-fluid">
+  <div class= "row mt-5 mr-1 ml-1" >
+
+
+  <div class = "list col-lg-4 col-md-6 d-none d-md-block">
+    <div class="mobile">
+      <app-equipment-list (selectedChanged)="handleSelected($event)"></app-equipment-list>
+    </div>
+  </div>
+
+  <div class = "list col-sm-12 col-xs-12 d-block d-sm-block d-md-none">
+    <div class="mobile" *ngIf="!selected">
+      <app-equipment-list (selectedChanged)="handleSelected($event)"></app-equipment-list>
+    </div>
+  </div>
+
+  <div class = "col-lg-8 col-md-6 col-sm-12 col-xs-12 pl-lg-2 ">
+    <div class="mobile" >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+</div>
