@@ -8,6 +8,7 @@ import { EquipmentItemComponent } from "./rental/rental-equipment/equipment-list
 import { EquipmentListComponent } from "./rental/rental-equipment/equipment-list/equipment-list.component";
 import { RentalEquipmentSelectInfoComponent } from "./rental/rental-equipment/rental-equipment-select-info/rental-equipment-select-info.component";
 import { RentalEquipmentComponent } from "./rental/rental-equipment/rental-equipment.component";
+import { RentEquipmentSummaryComponent } from "./rental/RentEquipmentSummary/RentEquipmentSummary.component";
 
 @NgModule({
   declarations: [

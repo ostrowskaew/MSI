@@ -8,7 +8,6 @@
         <div class="row">
           <div class="col-xs-12 mb-2">
             <div class="button-group">
-
               <button
               class="btn btn-success ml-2"
               type="button"
@@ -17,7 +16,18 @@
               (click)="makeReservation()">
                 Zarezerwuj
               </button>
+
+              <button
+              class="btn btn-danger ml-2"
+              type="button"
+              id="dropdownMenuButton"
+              aria-expanded="false"
+              [disabled]="isDisabled"
+              (click)="endReservation()">
+                Ukończ rezerwację
+              </button>
             </div>
+
           </div>
         </div>
         <div class="img ">

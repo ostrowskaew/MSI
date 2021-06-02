@@ -20,6 +20,8 @@ import { UserRentalComponent } from './user/user-rental/user-rental.component';
 import { ProfileItemComponent } from './user/user-profile/profile-item/profile-item.component';
 import { UserAccountService } from './services/userAccount.service';
 import { RentEquipmentModule } from './rent-equipment.module';
+import { ReservationService } from './services/reservation.service';
+import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/RentEquipmentSummary.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { RentEquipmentModule } from './rent-equipment.module';
     HomeComponent,
     UserProfileComponent,
     UserRentalComponent,
-    ProfileItemComponent
+    ProfileItemComponent,
+    RentEquipmentSummaryComponent
 
   ],
   imports: [
@@ -47,6 +50,7 @@ import { RentEquipmentModule } from './rent-equipment.module';
     EquipementService,
     CookieService,
     UserAccountService,
+    ReservationService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

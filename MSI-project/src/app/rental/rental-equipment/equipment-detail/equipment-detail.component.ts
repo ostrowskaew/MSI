@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Equipment } from 'src/app/models/equipment';
 import { AuthService } from 'src/app/services/auth.service';
 import { EquipementService } from 'src/app/services/equipement.service';
+import { ReservationService } from 'src/app/services/reservation.service';
 
 @Component({
   selector: 'app-equipment-detail',
@@ -16,12 +17,14 @@ export class EquipmentDetailComponent implements OnInit {
   id: number;
   usernameSub: Subscription;
   login: string;
+  isDisabled = true;
 
   constructor(
     private route: ActivatedRoute,
     private equipementService: EquipementService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private reservationService: ReservationService
     ) { }
 
   ngOnInit(): void {
@@ -52,8 +55,40 @@ export class EquipmentDetailComponent implements OnInit {
 
   makeReservation() {
     if(this.login) {
+      if( this.reservationService.getSelectedEquipment().length != 0) {
+        if(!this.containsObject(this.equipementDisplayed, this.reservationService.getSelectedEquipment())
+        && this.equipementDisplayed.lenderInstructor == this.reservationService.getOwnerOfEquipment()) {
+          this.reservationService.selectEquipment(this.equipementDisplayed);
+          console.log(this.reservationService.getSelectedEquipment());
+          this.isDisabled = false;
+        }
+      }
+      else {
+        this.reservationService.selectEquipment(this.equipementDisplayed);
+          console.log(this.reservationService.getSelectedEquipment());
+          this.isDisabled = false;
+      }
 
     }
+
   }
+
+  endReservation() {
+    if(this.login) {
+      this.router.navigate(['/rent-equipment-summary']);
+    }
+
+  }
+
+   containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 }

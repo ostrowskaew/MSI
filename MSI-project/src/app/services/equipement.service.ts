@@ -1,9 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, EventEmitter } from "@angular/core";
 import { Observable, Subject } from "rxjs";
-import { tap } from "rxjs/operators";
 import { Equipment } from "../models/equipment";
-import { EquipmentType } from "../models/equipmentType";
 
 @Injectable()
 export class EquipementService {

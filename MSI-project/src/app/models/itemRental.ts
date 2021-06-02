@@ -1,4 +1,4 @@
-import { Equipement } from "./equipement";
+import { Equipment } from "./equipment";
 import { ItemRentalKey } from "./itemRentalKey";
 import { Rental } from "./rental";
 import { RentalReview } from "./rentalReview";
@@ -8,7 +8,7 @@ export class ItemRental {
   constructor(
     private _id: ItemRentalKey,
     private _rental: Rental,
-    private _equipement: Equipement,
+    private _equipement: Equipment,
     private _rentalReview: RentalReview
     ){}
 
@@ -18,10 +18,10 @@ export class ItemRental {
     public set rentalReview(value: RentalReview) {
       this._rentalReview = value;
     }
-    public get equipement(): Equipement {
+    public get equipement(): Equipment {
       return this._equipement;
     }
-    public set equipement(value: Equipement) {
+    public set equipement(value: Equipment) {
       this._equipement = value;
     }
     public get rental(): Rental {
