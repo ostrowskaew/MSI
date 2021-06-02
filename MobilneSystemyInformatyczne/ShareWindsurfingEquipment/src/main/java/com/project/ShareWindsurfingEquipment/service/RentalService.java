@@ -7,8 +7,13 @@ import java.util.Optional;
 import com.project.ShareWindsurfingEquipment.model.Rental;
 import com.project.ShareWindsurfingEquipment.repository.RentalRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class RentalService {
 
+    @Autowired
     RentalRepository rentalRepository;
 
     public Rental addNewRental(Rental rental) {

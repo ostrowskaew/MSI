@@ -22,9 +22,8 @@ import io.jsonwebtoken.lang.Assert;
 @CrossOrigin
 @RequestMapping("/rental")
 class RentalController {
+    RentalService rentalService;
 
-    private  RentalService rentalService;
-/*
     @Autowired
     public RentalController(RentalService rentalService) {
 
@@ -32,7 +31,7 @@ class RentalController {
 
         this.rentalService = rentalService;
     }
-*/
+
     @GetMapping
     public ResponseEntity<List<Rental>> getAllRentals() {
 
