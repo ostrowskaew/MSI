@@ -13,7 +13,7 @@
     <app-equipment-item
     *ngFor="let equipement of equipements"
     [equipement] = "equipement"
-    (equipmentChanged)="deletedHandler($event)"
+    (equipmentChanged)="selectedHandler($event)"
     >
   </app-equipment-item>
   </div>
