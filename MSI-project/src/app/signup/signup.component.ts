@@ -47,7 +47,10 @@ export class SignupComponent implements OnInit {
 
     this.authService.signUp(this.model).subscribe(
       (tmp) => {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/home']).then(
+          () => {
+            window.location.reload();
+          });
       },
       (err) => {
         alert('Wprowadzono błędne dane!');

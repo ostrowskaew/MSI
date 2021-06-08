@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Role } from 'src/app/models/role';
 import { UserAccount } from 'src/app/models/UserAccount';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,12 +16,12 @@ export class UserProfileComponent implements OnInit {
   user = Role.USER;
   owner = Role.USER2;
 
-  constructor(private authService: AuthService, private UserAccountService: UserAccountService) {
-    this.currentUser = this.authService.getCurrentUser();
-    console.log(this.currentUser);
+  constructor(private UserAccountService: UserAccountService, private readonly route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.currentUser = this.route.snapshot.data.user;
+    console.log(this.route.snapshot.data.user);
   }
 
   changeDescription(description: any) : void {
