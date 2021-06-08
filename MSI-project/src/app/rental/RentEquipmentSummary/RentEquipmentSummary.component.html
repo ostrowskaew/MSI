@@ -1,8 +1,86 @@
+<h1 style="text-align: center">Podsumowanie</h1>
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8">
+    <app-SummaryItem
+      *ngFor="let equipement of equipements; let i = index"
+      [equipement]="equipement"
+      [index]="i"
+      (itemDeleted)="deletedHandler($event)"
+    >
+    </app-SummaryItem>
+  </div>
+  <div class="col-lg-2"></div>
+</div>
+
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8 border border-primary">
+    <div class="form-group row mt-2">
+      <label for="priceTotal" class="col-3 col-form-label">Suma:</label>
+      <div class="col-lg-6">
+        <p>20.00 zł</p>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="lender" class="col-3 col-form-label">Wypożyczający:</label>
+      <div class="col-lg-6">
+        <p>Username</p>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="date" class="col-3 col-form-label">Data wypożyczenia:</label>
+      <div class="col-lg-6">
+        <div class="form-group row">
+          <form class="form-inline">
+            <div class="row">
+              <div class="col-8">
+                <div class="form-group">
+                  <div class="input-group">
+                    <input
+                      class="form-control"
+                      placeholder="yyyy-mm-dd"
+                      name="dp"
+                      [(ngModel)]="model"
+                      ngbDatepicker
+                      #d="ngbDatepicker"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-outline-secondary calendar btn-info"
+                        (click)="d.toggle()"
+                        type="button"
+                      ></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="time" class="col-3 col-form-label">Godzina wypożyczenia:</label>
+      <div class="col-lg-6">
+        <p>Username</p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <button
-  class="btn btn-danger ml-2"
+  class="btn btn-danger ml-4 mt-4"
   type="button"
-  id="dropdownMenuButton"
+  aria-expanded="false"
+  (click)="clear()"
+>
+  Anuluj
+</button>
+<button
+  class="btn btn-success ml-2 mt-4"
+  type="button"
   aria-expanded="false"
   (click)="confirmReservation()"
 >
