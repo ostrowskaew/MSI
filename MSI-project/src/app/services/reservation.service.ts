@@ -26,4 +26,15 @@ export class ReservationService {
   getOwnerOfEquipment(): string {
     return this.selectedEquipment[0].lenderInstructor;
   }
+
+  deleteEquipment(index: number) {
+    this.selectedEquipment.splice(index, 1);
+    this.selectedEquipmentChanged.next(this.selectedEquipment.slice());
+  }
+
+  clear(){
+    this.selectedEquipment = [];
+    this.selectedEquipmentChanged.next(this.selectedEquipment.slice());
+  }
+
 }

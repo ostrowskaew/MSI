@@ -1,0 +1,35 @@
+<a class="list-group-item clearfix mt-2">
+  <div class="pull-left">
+    <div class="row">
+      <div class="col-6">
+        <h4 class="list-group-item-heading">
+          {{ equipement.brand }} {{ equipement.model }}
+        </h4>
+        <p class="list-item"> Rozmiar: {{ equipement.size }}</p>
+        <p class="list-item"> Rok produkcji: {{ equipement.year }}</p>
+        <p class="list-item"> Właściciel: {{ equipement.lenderInstructor }}</p>
+        <p class="list-item"> Cena za godzinę: {{ equipement.pricePerHour }} zł</p>
+      </div>
+      <div class="col-3">
+        <span class="pull-right">
+          <img
+            src="{{ equipement.urlImage }}"
+            alt="{{ equipement.description }}"
+            class="image-responsive"
+            style="height: 150px; width: 150px; object-fit: cover"
+          />
+        </span>
+      </div>
+      <div class="col-2">
+        <button
+    class="btn btn-danger ml-4 mt-4"
+    type="button"
+    aria-expanded="false"
+    (click)="deleteItem()"
+  >
+    Anuluj
+  </button>
+      </div>
+    </div>
+  </div>
+</a>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,6 +23,10 @@ import { UserAccountService } from './services/userAccount.service';
 import { RentEquipmentModule } from './rent-equipment.module';
 import { ReservationService } from './services/reservation.service';
 import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/RentEquipmentSummary.component';
+import { SummaryItemComponent } from './rental/RentEquipmentSummary/SummaryItem/SummaryItem.component';
+import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/Ren
     UserProfileComponent,
     UserRentalComponent,
     ProfileItemComponent,
-    RentEquipmentSummaryComponent
+    RentEquipmentSummaryComponent,
+    SummaryItemComponent
 
   ],
   imports: [
@@ -41,7 +47,11 @@ import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/Ren
     CommonModule,
     AppRoutingModule,
     FormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
     OwnerModule,
+    NgbModule,
+    MatNativeDateModule,
     RentEquipmentModule,
     HttpClientModule,
     BrowserAnimationsModule
