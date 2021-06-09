@@ -7,6 +7,10 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
+import { UserRentalService } from 'src/app/services/user.rental.service';
+import { Rental } from 'src/app/models/rental';
+import { UserAccount } from 'src/app/models/UserAccount';
+import { RentalForm } from 'src/app/models/rentalForm';
 @Component({
   selector: 'app-RentEquipmentSummary',
   templateUrl: './RentEquipmentSummary.component.html',
@@ -16,6 +20,7 @@ export class RentEquipmentSummaryComponent implements OnInit {
 
   usernameSub: Subscription;
   login: string;
+  user: UserAccount;
   reservedEquipment: Equipment[];
   equipements: Equipment[] = [];
   hourChosen: string;
@@ -31,16 +36,14 @@ export class RentEquipmentSummaryComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private authService: AuthService,
-    private calendar: NgbCalendar) { }
+    private calendar: NgbCalendar,
+    private rentalService: UserRentalService) { }
 
   ngOnInit() {
-    this.usernameSub = this.authService.usernameSignedIn
-    .subscribe(user => {
-      this.login = user;
-    });
-
+    this.authService.getCurrentUser().subscribe(user => this.user = user);
+    this.authService.getCurrentUser().subscribe(user => this.login = user.login);
     this.getRentedEquipment();
-    this.countSubTotalPrice();
+
   }
 
   getRentedEquipment() {
@@ -48,7 +51,17 @@ export class RentEquipmentSummaryComponent implements OnInit {
   }
 
   confirmReservation() {
-    this.checkIfDateIsCorrect();
+    var date = this.checkIfDateIsCorrect();
+    this.calculate();
+    this.rentalService.addRental({
+      "totalPrice" : this.totalPrice,
+      "duration" : this.durationChosen,
+      "dateRental": date,
+      "hourRental": this.hourChosen
+    },
+      this.login)
+    .subscribe(res => console.log(res));
+    this.router.navigateByUrl('/rent-confirmation');
   }
 
   clear() {
@@ -83,12 +96,13 @@ export class RentEquipmentSummaryComponent implements OnInit {
   checkIfDateIsCorrect(){
     var today = new Date();
     var dateStart = new Date(this.model.year, this.model.month -1, this.model.day );
-
-    if(dateStart <= today) {
-      this.openInfo("Upssss. Data nie może być wcześniejsza niż jutro");
+    var formatedDate = this.model.month-1 + "-" + this.model.day + "-"+this.model.year;
+    if(dateStart <= today || dateStart == null) {
+      this.openInfo("Data nie może być wcześniejsza niż jutro");
+      return null;
     }
     else{
-      console.log(dateStart);
+      return formatedDate;
     }
   }
 

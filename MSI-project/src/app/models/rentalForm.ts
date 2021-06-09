@@ -1,23 +1,16 @@
 import { UserAccount } from "./UserAccount";
 
-export class Rental {
+export class RentalForm {
 
 
   constructor(
-    private _id: number,
     private _totalPrice: number,
     private _dateRental: string,
     private _hourRental: string,
     private _duration: number,
-    private _userAccount: UserAccount
   ){}
 
-  public get userAccount(): UserAccount {
-    return this._userAccount;
-  }
-  public set userAccount(value: UserAccount) {
-    this._userAccount = value;
-  }
+
   public get duration(): number {
     return this._duration;
   }
@@ -44,10 +37,5 @@ export class Rental {
   public set totalPrice(value: number) {
     this._totalPrice = value;
   }
-  public get id(): number {
-    return this._id;
-  }
-  public set id(value: number) {
-    this._id = value;
-  }
+
 }

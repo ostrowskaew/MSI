@@ -25,10 +25,7 @@ export class OwnerEquipementListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.usernameSub = this.authService.usernameSignedIn
-    .subscribe(user => {
-      this.login = user;
-    });
+    this.authService.getCurrentUser().subscribe(user => this.login = user.login);
 
     this.subscribtionEquipements = this.equipementService.getOwnersEquipment(this.login)
     .subscribe((Equipements: Equipment[]) => {
@@ -45,7 +42,6 @@ export class OwnerEquipementListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() :void {
-    this.usernameSub.unsubscribe();
     this.subscribtionEquipements.unsubscribe();
 
   }

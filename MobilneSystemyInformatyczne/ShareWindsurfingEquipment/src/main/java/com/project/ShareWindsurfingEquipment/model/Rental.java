@@ -5,7 +5,6 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @Entity
 @Table
@@ -19,7 +18,10 @@ public class Rental {
     private BigDecimal totalPrice;
 
     @Column
-    private LocalDate dateRental;
+    private String dateRental;
+
+    @Column
+    private String hourRental;
 
     @Column
     private int duration;
@@ -28,10 +30,26 @@ public class Rental {
     @JoinColumn(name = "user_account_id")
     private UserAccount userAccount;
 
-    public Rental(BigDecimal totalPrice, LocalDate dateRental, int duration) {
+    public Rental(BigDecimal totalPrice, String dateRental, String hourRental, int duration) {
         this.totalPrice = totalPrice;
         this.dateRental = dateRental;
+        this.hourRental = hourRental;
         this.duration = duration;
+    }
+
+
+    public Rental(Long id, BigDecimal totalPrice, String dateRental, String hourRental, int duration, UserAccount userAccount) {
+        this.id = id;
+        this.totalPrice = totalPrice;
+        this.dateRental = dateRental;
+        this.hourRental = hourRental;
+        this.duration = duration;
+        this.userAccount = userAccount;
+    }
+
+
+    public Rental() {
+  
     }
 
     public Long getId() {
@@ -50,11 +68,11 @@ public class Rental {
         this.totalPrice = totalPrice;
     }
 
-    public LocalDate getDateRental() {
+    public String getDateRental() {
         return dateRental;
     }
 
-    public void setDateRental(LocalDate dateRental) {
+    public void setDateRental(String dateRental) {
         this.dateRental = dateRental;
     }
 
@@ -72,6 +90,14 @@ public class Rental {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+    }
+
+    public String getHourRental() {
+        return this.hourRental;
+    }
+
+    public void setHourRental(String hourRental) {
+        this.hourRental = hourRental;
     }
 
     @Override

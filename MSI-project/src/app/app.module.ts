@@ -29,6 +29,7 @@ import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { RentalConfirmationComponent } from './rental/rental-confirmation/rental-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/d
     UserRentalComponent,
     ProfileItemComponent,
     RentEquipmentSummaryComponent,
-    SummaryItemComponent
+    SummaryItemComponent,
+    RentalConfirmationComponent
 
   ],
   imports: [

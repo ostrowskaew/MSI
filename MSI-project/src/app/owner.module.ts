@@ -11,10 +11,6 @@ import { OwnerSelectEquipementInfoComponent } from "./owner/owner-equipement/own
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RouterModule } from "@angular/router";
-import { CookieService } from "ngx-cookie-service";
-import { AuthInterceptor } from "./interceptors/auth.interceptor";
-import { HTTP_INTERCEPTORS } from "@angular/common/http";
-import { AppComponent } from "./app.component";
 
 @NgModule({
   declarations: [

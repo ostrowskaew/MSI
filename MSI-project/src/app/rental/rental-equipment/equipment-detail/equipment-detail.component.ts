@@ -29,10 +29,9 @@ export class EquipmentDetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.usernameSub = this.authService.usernameSignedIn
-    .subscribe(user => {
-      this.login = user;
-    });
+    this.authService.getCurrentUser()
+    .subscribe(user => this.login = user.login);
+
 
     this.route.params
     .subscribe(
@@ -70,10 +69,14 @@ export class EquipmentDetailComponent implements OnInit {
       }
 
     }
+    else {
+      console.log("niezalogowany");
+    }
 
   }
 
   endReservation() {
+    console.log(this.login);
     if(this.login) {
       this.router.navigate(['/rent-equipment-summary']);
     }

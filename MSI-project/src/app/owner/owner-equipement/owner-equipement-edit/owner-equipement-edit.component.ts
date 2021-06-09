@@ -62,10 +62,7 @@ export class OwnerEquipementEditComponent implements OnInit, OnDestroy {
       }
     })
 
-    this.usernameSub = this.authService.usernameSignedIn
-    .subscribe(user => {
-      this.login = user;
-    });
+    this.authService.getCurrentUser().subscribe(user => this.login = user.login);
   }
 
   initEquipment() {

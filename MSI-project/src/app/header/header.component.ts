@@ -12,10 +12,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   userSub: Subscription;
 
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isSignedIn;
+
+
   }
 
   ngOnDestroy(): void {

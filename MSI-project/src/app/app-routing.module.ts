@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
+import { RentalConfirmationComponent } from './rental/rental-confirmation/rental-confirmation.component';
 import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/RentEquipmentSummary.component';
 import { UserResolver } from './resolver/user.resolver';
 import { SignupComponent } from './signup/signup.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent, resolve: {user: UserResolver}},
   { path: 'rented-equipment', component: UserRentalComponent},
   { path: 'rent-equipment-summary', component: RentEquipmentSummaryComponent},
+  { path: 'rent-confirmation', component: RentalConfirmationComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

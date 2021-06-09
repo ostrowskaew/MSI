@@ -80,7 +80,7 @@ export class AuthService {
       ));
   }
 
-  getCurrentUser() {
+  getCurrentUser(): Observable<UserAccount> {
     return this.getUser(localStorage.getItem('login'));
   }
 
