@@ -16,7 +16,8 @@ export class UserProfileComponent implements OnInit {
   user = Role.USER;
   owner = Role.USER2;
 
-  constructor(private UserAccountService: UserAccountService, private readonly route: ActivatedRoute) {
+  constructor(private UserAccountService: UserAccountService,
+    private readonly route: ActivatedRoute) {
   }
 
   ngOnInit() {
