@@ -28,6 +28,7 @@ import { SummaryItemComponent } from './rental/RentEquipmentSummary/SummaryItem/
 import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     CommonModule,
+    MatDialogModule,
     AppRoutingModule,
     FormsModule,
     MatFormFieldModule,
