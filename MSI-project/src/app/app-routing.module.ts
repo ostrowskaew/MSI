@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/RentEquipmentSummary.component';
-import { UserResolver } from './resolver/user.resolver';
+import { UserResolver } from './resolver/UserResolver';
 import { SignupComponent } from './signup/signup.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { UserRentalComponent } from './user/user-rental/user-rental.component';
