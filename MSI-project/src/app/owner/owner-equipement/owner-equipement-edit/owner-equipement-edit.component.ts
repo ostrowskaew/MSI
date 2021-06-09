@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators, Form } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { first, tap } from 'rxjs/operators';
 import { Equipment } from 'src/app/models/equipment';
 import { EquipmentType } from 'src/app/models/equipmentType';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,7 +14,7 @@ import { EquipementService } from 'src/app/services/equipement.service';
   templateUrl: './owner-equipement-edit.component.html',
   styleUrls: ['./owner-equipement-edit.component.css']
 })
-export class OwnerEquipementEditComponent implements OnInit, OnDestroy {
+export class OwnerEquipementEditComponent implements OnInit {
 
   id: number;
   equipement: any;
@@ -47,7 +48,9 @@ export class OwnerEquipementEditComponent implements OnInit, OnDestroy {
     private authService: AuthService) {
      }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.getUser();
+
     this.route.params.subscribe(params => {
       this.id= +params['id'];
       this.editMode = params['id'] != -1;
@@ -65,6 +68,16 @@ export class OwnerEquipementEditComponent implements OnInit, OnDestroy {
     this.authService.getCurrentUser().subscribe(user => this.login = user.login);
   }
 
+  getUser(){
+
+    return this.authService.getCurrentUser().pipe(
+      tap(
+        user => {this.login = user.login;
+        }
+      ),first())
+      .toPromise()
+}
+
   initEquipment() {
     this.equipement = {
       urlImage: '',
@@ -79,6 +92,9 @@ export class OwnerEquipementEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    if(!this.login){
+      console.log("no user");
+    }
     this.equipement.lenderInstructor = this.login;
 
     if (this.dictionary.hasOwnProperty(this.type)) {
@@ -106,8 +122,5 @@ export class OwnerEquipementEditComponent implements OnInit, OnDestroy {
     this.router.navigate(['/owner-equipement']);
   }
 
-  ngOnDestroy() :void {
-    this.usernameSub.unsubscribe();
-  }
 
 }
