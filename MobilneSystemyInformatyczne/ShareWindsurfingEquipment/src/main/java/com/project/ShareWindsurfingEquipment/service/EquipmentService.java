@@ -33,7 +33,6 @@ public class EquipmentService {
 
 
     public void addNewEquipment(Equipment equipmentForm) {
-        equipmentForm.setId((Long) equipmentForm.getId());
         equipmentRepository.save(equipmentForm);
     }
 

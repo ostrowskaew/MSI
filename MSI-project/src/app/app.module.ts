@@ -22,6 +22,7 @@ import { ProfileItemComponent } from './user/user-profile/profile-item/profile-i
 import { UserAccountService } from './services/userAccount.service';
 import { RentEquipmentModule } from './rent-equipment.module';
 import { ReservationService } from './services/reservation.service';
+import { UserRentalService } from './services/user.rental.service';
 import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/RentEquipmentSummary.component';
 import { SummaryItemComponent } from './rental/RentEquipmentSummary/SummaryItem/SummaryItem.component';
 import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
@@ -61,6 +62,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CookieService,
     UserAccountService,
     ReservationService,
+    UserRentalService,
   {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

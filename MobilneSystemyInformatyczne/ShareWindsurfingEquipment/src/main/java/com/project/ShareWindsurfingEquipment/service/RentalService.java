@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.project.ShareWindsurfingEquipment.model.Rental;
+import com.project.ShareWindsurfingEquipment.model.UserAccount;
 import com.project.ShareWindsurfingEquipment.repository.RentalRepository;
 
+import com.project.ShareWindsurfingEquipment.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,9 @@ public class RentalService {
 
     @Autowired
     RentalRepository rentalRepository;
+
+    @Autowired
+    UserAccountRepository accountRepository;
 
     public Rental addNewRental(Rental rental) {
         return rentalRepository.save(rental);
@@ -43,6 +48,9 @@ public class RentalService {
     }
 
     public List<Rental> getUsersRentals(String login) {
-		return null;
+
+        UserAccount account = accountRepository.getByLogin(login);
+
+		return rentalRepository.getAllByUserAccount(account);
     }
 }

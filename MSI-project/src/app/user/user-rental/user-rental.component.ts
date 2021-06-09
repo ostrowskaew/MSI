@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Rental } from 'src/app/models/rental';
+import { UserAccount } from 'src/app/models/UserAccount';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserRentalService } from 'src/app/services/user.rental.service';
+import { UserAccountService } from 'src/app/services/userAccount.service';
+import { Role } from 'src/app/models/role'
 
 @Component({
   selector: 'app-user-rental',
@@ -7,9 +14,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRentalComponent implements OnInit {
 
-  constructor() { }
+  rentalList: Rental[] = [];
+  userLogin: string;
+  currentUser : UserAccount;
+
+  constructor(private userRentalService: UserRentalService) { }
 
   ngOnInit() {
+    this.getRentals();
+  }
+
+  getRentals() {
+    this.userRentalService.getAllRentalsForUser(localStorage.getItem('login')).subscribe(
+      el => this.rentalList = el
+    );
   }
 
 }
