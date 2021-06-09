@@ -18,8 +18,22 @@ export class UserRentalService {
         return this.http.get<Rental[]>(url);
     }
 
+    getAllRentalsForOwner(login: string): Observable<Rental[]> {
+      const url = `${this.endpoint}/owner/${login}`;
+
+      return this.http.get<Rental[]>(url);
+  }
+
   addRental(rental: any, login: string) :Observable<Rental> {
     const url = `${this.endpoint}/${login}`;
     return this.http.post<any>(url, rental);
+  }
+
+  updateStatus(status: string, rentalId: number): Observable<any>  {
+    var rental;
+    const url = `${this.endpoint}/${status}/${rentalId}`;
+    this.http.post(url, null)
+    .subscribe(r => rental = r);
+    return this.rental;
   }
 }

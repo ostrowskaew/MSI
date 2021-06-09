@@ -1,5 +1,6 @@
 package com.project.ShareWindsurfingEquipment.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,5 +53,20 @@ public class RentalService {
         UserAccount account = accountRepository.getByLogin(login);
 
 		return rentalRepository.getAllByUserAccount(account);
+    }
+
+    public List<Rental> getOwnerRentals(String lender) {
+
+		return rentalRepository.findByLender(lender);
+    }
+
+    public Rental updateStatus(String status, String rentalId) {
+       
+        Rental rental= getRentalById(Long.parseLong(rentalId));
+
+        rental.setStatus(status);
+        rentalRepository.save(rental);
+        return rental;
+
     }
 }

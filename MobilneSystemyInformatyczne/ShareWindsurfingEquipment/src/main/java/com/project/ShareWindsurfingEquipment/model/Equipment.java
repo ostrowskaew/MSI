@@ -1,9 +1,11 @@
 package com.project.ShareWindsurfingEquipment.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.ShareWindsurfingEquipment.common.EquipmentType;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Table
@@ -37,9 +39,21 @@ public class Equipment {
     @Column
     private int year;
 
+    @JsonIgnoreProperties("equipment")
+	@ManyToMany
+	private Set<Rental> rental = null;
+
     @Enumerated(EnumType.STRING)
     @Column
     private EquipmentType equipmentType;
+
+    public Set<Rental> getRentals() {
+        return this.rental;
+    }
+
+    public void setRentals(Set<Rental> rentals) {
+        this.rental = rentals;
+    }
 
     public Equipment() {
     }
@@ -54,6 +68,7 @@ public class Equipment {
         this.description = description;
         this.year = year;
         this.equipmentType = EquipmentType.valueOf(equipmentType);
+        this.rental = null;
     }
 
     public Long getId() {

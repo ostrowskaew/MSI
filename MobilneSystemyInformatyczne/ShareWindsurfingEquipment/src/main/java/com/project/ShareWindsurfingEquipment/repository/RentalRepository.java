@@ -11,4 +11,6 @@ import java.util.List;
 public interface RentalRepository extends JpaRepository<Rental, Long> {
 
     List<Rental> getAllByUserAccount(UserAccount userAccount);
+
+    public List<Rental> findByLender(String lender);
 }

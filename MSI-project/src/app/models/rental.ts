@@ -8,6 +8,8 @@ export class Rental {
     private _totalPrice: number,
     private _dateRental: string,
     private _hourRental: string,
+    private _status: string,
+    private _lender: string,
     private _duration: number,
     private _userAccount: UserAccount
   ){}
@@ -23,6 +25,18 @@ export class Rental {
   }
   public set duration(value: number) {
     this._duration = value;
+  }
+  public get status(): string {
+    return this._status;
+  }
+  public set status(value: string) {
+    this._status = value;
+  }
+  public get lender(): string {
+    return this._status;
+  }
+  public set lender(value: string) {
+    this._status = value;
   }
   public get dateRental(): string {
     return this._dateRental;

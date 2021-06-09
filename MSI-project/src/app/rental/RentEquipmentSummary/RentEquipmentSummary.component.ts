@@ -7,10 +7,10 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import {NgbCalendar, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
-import { UserRentalService } from 'src/app/services/user.rental.service';
 import { Rental } from 'src/app/models/rental';
 import { UserAccount } from 'src/app/models/UserAccount';
 import { RentalForm } from 'src/app/models/rentalForm';
+import { UserRentalService } from 'src/app/services/user.rental.service';
 @Component({
   selector: 'app-RentEquipmentSummary',
   templateUrl: './RentEquipmentSummary.component.html',
@@ -57,7 +57,10 @@ export class RentEquipmentSummaryComponent implements OnInit {
       "totalPrice" : this.totalPrice,
       "duration" : this.durationChosen,
       "dateRental": date,
-      "hourRental": this.hourChosen
+      "hourRental": this.hourChosen,
+      "equipments": this.equipements,
+      "lender" : this.equipements[0].lenderInstructor,
+      "status" : "oczekujący"
     },
       this.login)
     .subscribe(res => console.log(res));

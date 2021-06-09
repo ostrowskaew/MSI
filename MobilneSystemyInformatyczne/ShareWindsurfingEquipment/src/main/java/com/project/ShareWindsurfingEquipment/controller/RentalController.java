@@ -1,9 +1,6 @@
 package com.project.ShareWindsurfingEquipment.controller;
 
-import java.io.Console;
-import java.time.LocalDate;
-import java.time.Year;
-import java.util.Date;
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.project.ShareWindsurfingEquipment.model.Rental;
@@ -52,6 +49,12 @@ class RentalController {
         return ResponseEntity.ok(rentalService.getUsersRentals(login));
     }
 
+    @GetMapping("/owner/{login}")
+    public ResponseEntity<List<Rental>> getOwnersRentals(@PathVariable String login) {
+
+        return ResponseEntity.ok(rentalService.getOwnerRentals(login));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Rental> getRentalById(@PathVariable Long id) {
 
@@ -69,5 +72,11 @@ class RentalController {
 	public void deleteRental(@PathVariable Long id) {
 		rentalService.deleteRental(id);
 	}
+
+    @PostMapping("/{status}/{rentalId}")
+    public void updateStatus(@PathVariable String status, @PathVariable String rentalId) {
+        rentalService.updateStatus(status, rentalId);
+        
+    }
     
 }

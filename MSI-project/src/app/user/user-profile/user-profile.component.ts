@@ -41,6 +41,7 @@ export class UserProfileComponent implements OnInit {
   rentEquipment() {
     this.currentUser.role = Role.USER2 ;
     this.UserAccountService.updateRole(Role.USER2, this.currentUser.login);
+    location.reload();
   }
 
 }

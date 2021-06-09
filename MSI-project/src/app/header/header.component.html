@@ -12,7 +12,7 @@
               <a class="nav-link" routerLink="rent-equipment">Zajdź sprzęt</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" routerLink="owner-equipement" routerLinkActive="active">Udostępnij sprzęt</a>
+            <a class="nav-link" routerLink="owner-equipement" *ngIf="currentUser.role=='USER2'" routerLinkActive="active">Udostępnij sprzęt</a>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
@@ -38,6 +38,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="rented-equipment">Moje wypożyczenia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="currentUser.role=='USER2'" routerLink="rented-equipment">Wypożyczone ode mnie</a>
           </li>
           <button class="btn btn-outline-info my-2 my-sm-0" (click)="onLogout()">Wyloguj</button>
       </ul>

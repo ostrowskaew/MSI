@@ -11,6 +11,7 @@ import { OwnerSelectEquipementInfoComponent } from "./owner/owner-equipement/own
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RouterModule } from "@angular/router";
+import { OwnerRentedComponent } from "./owner/owner-rented/owner-rented.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RouterModule } from "@angular/router";
     OwnerEquipementItemComponent,
     OwnerEquipementDetailComponent,
     OwnerEquipementEditComponent,
-    OwnerSelectEquipementInfoComponent
+    OwnerSelectEquipementInfoComponent,
+    OwnerRentedComponent
   ],
 
   imports: [

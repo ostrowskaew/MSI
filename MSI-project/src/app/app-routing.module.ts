@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
+import { OwnerRentedComponent } from './owner/owner-rented/owner-rented.component';
 import { RentalConfirmationComponent } from './rental/rental-confirmation/rental-confirmation.component';
 import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/RentEquipmentSummary.component';
 import { UserResolver } from './resolver/UserResolver';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'rented-equipment', component: UserRentalComponent},
   { path: 'rent-equipment-summary', component: RentEquipmentSummaryComponent},
   { path: 'rent-confirmation', component: RentalConfirmationComponent},
+  { path: 'owner-rented', component: OwnerRentedComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

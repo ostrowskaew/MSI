@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { first, tap } from 'rxjs/operators';
+import { UserAccount } from '../models/UserAccount';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -9,17 +11,26 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  currentUser: UserAccount;
   isLoggedIn = false;
   userSub: Subscription;
 
 
   constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.currentUser = await this.getUser();
     this.isLoggedIn = this.authService.isSignedIn;
-
-
   }
+
+  getUser(){
+    return this.authService.getCurrentUser().pipe(
+      tap(
+        user => {this.currentUser = user;
+        }
+      ),first())
+      .toPromise()
+}
 
   ngOnDestroy(): void {
     this.userSub.unsubscribe();

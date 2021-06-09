@@ -21,14 +21,32 @@
                 <label for="dateRental" class="col-4 col-form-label">
                   Data wypożyczenia
                 </label>
-                <div class="col-7">
+                <div class="col-6">
                     {{ rental.dateRental }}
                 </div>
                 <label for="totalPrice" class="col-4 col-form-label">
                   Cena wypożyczenia
                 </label>
-                <div class="col-7">
+                <div class="col-6">
+                    {{ rental.hourRental }}
+                </div>
+                <label for="totalPrice" class="col-4 col-form-label">
+                  Cena wypożyczenia
+                </label>
+                <div class="col-6">
                     {{ rental.totalPrice }} zł
+                </div>
+                <label for="totalPrice" class="col-4 col-form-label">
+                  Czas trwania
+                </label>
+                <div class="col-6">
+                    {{ rental.duration }} h
+                </div>
+                <label for="totalPrice" class="col-4 col-form-label">
+                  Status
+                </label>
+                <div class="col-6">
+                    {{ rental.status }}
                 </div>
               </div>
             </div>

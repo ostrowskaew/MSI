@@ -1,0 +1,87 @@
+<section
+  style="
+    background-image: url('https://i.imgur.com/tpmjuSA.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+  "
+>
+  <div class="mask d-flex justify-content-center align-items-center">
+    <div class="container py-lg-3 my-lg-3">
+      <h1 class="font-weight-bold text-center pb-2">Moje wypożyczenia</h1>
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-lg-9 col-md-ms-xs-11">
+          <div class="card">
+            <div class="card-body z-depth-2 px-4">
+              <div class="row" *ngFor="let rental of rentalList; let i = index">
+                <div>
+
+                </div>
+                <h2 class="font-weight-bold text-center pb-2">
+                  Wypożyczenie {{ i + 1 }}
+                </h2>
+                <div class="row">
+                  <div class="col-6">
+                    <button
+                      class="btn btn-danger ml-4"
+                      *ngIf="rental.status=='oczekująca'"
+                      type="button"
+                      aria-expanded="false"
+                      (click)="rejectReservation(rental)"
+                    >
+                      Odrzuć
+                    </button>
+                    <button
+                      class="btn btn-success ml-2 "
+                      type="button"
+                      *ngIf="rental.status=='oczekująca'"
+                      aria-expanded="false"
+                      (click)="confirmReservation(rental)"
+                    >
+                      Zaakceptuj
+                    </button>
+                </div>
+
+                <div class="row">
+                  <label for="dateRental" class="col-4 col-form-label">
+                    Data wypożyczenia
+                  </label>
+                  <div class="col-6">
+                    {{ rental.dateRental }}
+                  </div>
+                  <label for="totalPrice" class="col-4 col-form-label">
+                    Cena wypożyczenia
+                  </label>
+                  <div class="col-3">
+                    {{ rental.hourRental }}
+                  </div>
+
+                  </div>
+                  <label for="totalPrice" class="col-4 col-form-label">
+                    Cena wypożyczenia
+                  </label>
+                  <div class="col-6">{{ rental.totalPrice }} zł</div>
+                  <label for="totalPrice" class="col-4 col-form-label">
+                    Czas trwania
+                  </label>
+                  <div class="col-6">{{ rental.duration }} h</div>
+                  <label for="totalPrice" class="col-4 col-form-label">
+                    Status
+                  </label>
+                  <div class="col-3">
+                    {{ rental.status }}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #loggedOut> Zaloguj się </ng-template>

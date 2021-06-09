@@ -17,9 +17,6 @@ public class RentalReview {
     @Column
     private BigDecimal rating;
 
-    @OneToOne(mappedBy = "rentalReview")
-    private ItemRental itemRental;
-
     public Long getId() {
         return id;
     }
@@ -44,13 +41,6 @@ public class RentalReview {
         this.rating = rating;
     }
 
-    public ItemRental getItemRental() {
-        return itemRental;
-    }
-
-    public void setItemRental(ItemRental itemRental) {
-        this.itemRental = itemRental;
-    }
 
     @Override
     public String toString() {
@@ -58,7 +48,6 @@ public class RentalReview {
                 "id=" + id +
                 ", review='" + review + '\'' +
                 ", rating=" + rating +
-                ", itemRental=" + itemRental +
                 '}';
     }
 }
