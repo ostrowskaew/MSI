@@ -33,35 +33,29 @@ public class EquipmentService {
 
 
     public void addNewEquipment(Equipment equipmentForm) {
+
         equipmentRepository.save(equipmentForm);
     }
 
     public Equipment getEquipmentById(Long id) {
+
         Optional<Equipment> optEquip = equipmentRepository.findById(id);
-		if (optEquip.isPresent()){
-		    Equipment pers = optEquip.get();
-		    return pers;
-		}
-		else{
-			return null;
-		}
+
+        return optEquip.orElse(null);
     }
 
     public List<Equipment> getAllEquipments() {
 
-        List<Equipment> equipments = new ArrayList<>();
-		equipmentRepository.findAll().forEach(equipments::add);
-		return equipments;
+        return new ArrayList<>(equipmentRepository.findAll());
     }
 
     public List<Equipment> getLendersEquipments(String lender) {
 
-        List<Equipment> equipments = new ArrayList<>();
-		equipmentRepository.findByLenderInstructor(lender).forEach(equipments::add);
-		return equipments;
+        return new ArrayList<>(equipmentRepository.findByLenderInstructor(lender));
     }
 
     public void deleteEquipment(Long id) {
+
 		equipmentRepository.deleteById(id);
 	}
 

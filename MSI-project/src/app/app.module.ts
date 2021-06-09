@@ -22,7 +22,6 @@ import { ProfileItemComponent } from './user/user-profile/profile-item/profile-i
 import { UserAccountService } from './services/userAccount.service';
 import { RentEquipmentModule } from './rent-equipment.module';
 import { ReservationService } from './services/reservation.service';
-import { UserRentalService } from './services/user.rental.service';
 import { RentEquipmentSummaryComponent } from './rental/RentEquipmentSummary/RentEquipmentSummary.component';
 import { SummaryItemComponent } from './rental/RentEquipmentSummary/SummaryItem/SummaryItem.component';
 import {MatFormFieldModule, MatLabel} from '@angular/material/form-field';
@@ -30,6 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { RentalConfirmationComponent } from './rental/rental-confirmation/rental-confirmation.component';
+import { UserRentalService } from './services/user.rental.service';
 
 @NgModule({
   declarations: [
