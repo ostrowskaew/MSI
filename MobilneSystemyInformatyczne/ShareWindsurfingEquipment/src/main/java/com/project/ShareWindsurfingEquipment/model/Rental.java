@@ -1,6 +1,9 @@
 package com.project.ShareWindsurfingEquipment.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -24,6 +27,12 @@ public class Rental {
     @ManyToOne
     @JoinColumn(name = "user_account_id")
     private UserAccount userAccount;
+
+    public Rental(BigDecimal totalPrice, LocalDate dateRental, int duration) {
+        this.totalPrice = totalPrice;
+        this.dateRental = dateRental;
+        this.duration = duration;
+    }
 
     public Long getId() {
         return id;

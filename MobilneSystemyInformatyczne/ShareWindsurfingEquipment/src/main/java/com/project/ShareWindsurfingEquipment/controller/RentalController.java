@@ -1,9 +1,14 @@
 package com.project.ShareWindsurfingEquipment.controller;
 
+import java.io.Console;
+import java.time.LocalDate;
+import java.time.Year;
+import java.util.Date;
 import java.util.List;
 
 import com.project.ShareWindsurfingEquipment.model.Rental;
 import com.project.ShareWindsurfingEquipment.service.RentalService;
+import com.project.ShareWindsurfingEquipment.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +28,9 @@ import io.jsonwebtoken.lang.Assert;
 @RequestMapping("/rental")
 class RentalController {
     RentalService rentalService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     public RentalController(RentalService rentalService) {
@@ -51,9 +59,11 @@ class RentalController {
     }
 
 
-    @PostMapping
-    public ResponseEntity<Rental> addRental(@RequestBody Rental rental) {
-    
+    @PostMapping("/{login}")
+    public ResponseEntity<Rental> addRental(@RequestBody Rental rental, @PathVariable String login) {
+        LocalDate date = rental.getDateRental();
+        String dateS = rental.getDateRental().toString();
+        rental.setUserAccount(this.userService.getUserByUsername(login));
         return ResponseEntity.ok(rentalService.addNewRental(rental));
     }
 

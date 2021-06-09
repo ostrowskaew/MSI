@@ -13,16 +13,11 @@
   <div class="col-lg-2"></div>
 </div>
 
-<div class="row">
+<div class="row mt-2">
   <div class="col-lg-2"></div>
   <div class="col-lg-8 border border-primary">
+
     <div class="form-group row mt-2">
-      <label for="priceTotal" class="col-3 col-form-label">Suma:</label>
-      <div class="col-lg-6">
-        <p>20.00 zł</p>
-      </div>
-    </div>
-    <div class="form-group row">
       <label for="lender" class="col-3 col-form-label">Wypożyczający:</label>
       <div class="col-lg-6">
         <p>Username</p>
@@ -34,7 +29,7 @@
         <div class="form-group row">
           <form class="form-inline">
             <div class="row">
-              <div class="col-8">
+
                 <div class="form-group">
                   <div class="input-group">
                     <input
@@ -55,18 +50,51 @@
                   </div>
                 </div>
               </div>
-            </div>
+
           </form>
         </div>
       </div>
     </div>
     <div class="form-group row">
-      <label for="time" class="col-3 col-form-label">Godzina wypożyczenia:</label>
+      <label for="time" class="col-3 col-form-label"
+        >Godzina wypożyczenia:</label
+      >
       <div class="col-lg-6">
-        <p>Username</p>
+        <select class="browser-default custom-select" [(ngModel)]="hourChosen">
+          <option *ngFor="let hour of hours" [hourChosen]="hour">
+            {{ hour }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="duration" class="col-3 col-form-label"
+        >Czas wypożyczenia (w godzinach):</label
+      >
+      <div class="col-lg-6">
+        <select class="browser-default custom-select" [(ngModel)]="durationChosen">
+          <option *ngFor="let dur of duration" [durationChosen]="dur">
+            {{ dur }}
+          </option>
+        </select>
       </div>
     </div>
 
+    <button
+  class="btn btn-info ml-2 mt-2"
+  type="button"
+  aria-expanded="false"
+  (click)="calculate()"
+>
+  Podlicz
+</button>
+
+    <div class="form-group row mt-2">
+      <label for="priceTotal" class="col-3 col-form-label">Suma:</label>
+      <div class="col-lg-6">
+        <p> {{totalPrice}} zł </p>
+      </div>
+    </div>
   </div>
 </div>
 
